@@ -38,3 +38,9 @@ If you have any questions or problems, please contact me by twitter: https://twi
 ------------A big thank you goes to Orcicorn. Without his fantastic help and extremely good work, I would not have a reliable source for the codes and a good alpha tester.Leave him a big thank you on Twitter! https://twitter.com/orcicorn
 
 Another big thank you goes to Micha for the incentive and the assistance if I had no more desire :D
+
+-------------
+-SOURCE-CODE-
+-------------
+Are you interested into the source-code?
+Take a look at https://github.com/SurrendeR1993/SHiFT-Code-Manager
