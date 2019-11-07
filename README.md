@@ -55,4 +55,4 @@ Take a look at https://github.com/SurrendeR1993/SHiFT-Code-Manager
 ----
 
 Pre-compiled & Ready to use:
-https://drive.google.com/drive/u/0/folders/1oJjEEGTPZJM8bf37EzL_ZiPzgj2NWMWA
+https://drive.google.com/drive/folders/15T1L40N5NFqJsPDGp7HVwXl1av2OJI7N
