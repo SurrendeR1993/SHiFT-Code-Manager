@@ -1,7 +1,7 @@
-######################
+##################
 ##		README		##
-######################
-SHiFT Code-Manager written by SurrendeR1993.	Version: 1.1
+##################
+SHiFT Code-Manager written by SurrendeR1993.
 
 -------------
 ---General---
@@ -11,11 +11,13 @@ Use at your own risk. I am not responsible for any negative consequences. The pr
 
 --------------
 ---SECURITY---
---------------The tool can save login data on request (e-mail address, password).
+--------------
+The tool can save login data on request (e-mail address, password).
 These are stored locally only slightly encrypted. Therefore, use on public PCs is not recommended, as long as the data is saved.
 
 ------------
------FAQ----------------
+-----FAQ----
+------------
 #The tool reports that the server does not accept the request. What can I do?
 Sometimes, especially on the first pass of SHiFT codes, 2k blocks communication after a few requests. When this happens, wait a while and try again. SHiFT Code-Manager saves all previously tried codes.
 
@@ -31,11 +33,15 @@ If you have any questions or problems, please contact me by twitter: https://twi
 
 -----------
 ---OTHER---
------------This tool uses the program "cURL" for Windows by Viktor Szakats. cURL on github: https://github.com/curl/curl-for-winAll used logos and brands belong to the respective companies and are used only for visualization.
+-----------
+This tool uses the program "cURL" for Windows by Viktor Szakats. cURL on github: https://github.com/curl/curl-for-win
+All used logos and brands belong to the respective companies and are used only for visualization.
 
 ------------
 ---THANKS---
-------------A big thank you goes to Orcicorn. Without his fantastic help and extremely good work, I would not have a reliable source for the codes and a good alpha tester.Leave him a big thank you on Twitter! https://twitter.com/orcicorn
+------------
+A big thank you goes to Orcicorn. Without his fantastic help and extremely good work, I would not have a reliable source for the codes and a good alpha tester.
+Leave him a big thank you on Twitter! https://twitter.com/orcicorn
 
 Another big thank you goes to Micha for the incentive and the assistance if I had no more desire :D
 
