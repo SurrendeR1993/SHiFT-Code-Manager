@@ -1,8 +1,8 @@
-######################
+##################
 ##		README		##
-######################
+##################
 
-SHiFT Code-Manager written by SurrendeR1993.	Version: 1.1
+SHiFT Code-Manager written by SurrendeR1993.
 
 -------------
 ---General---
