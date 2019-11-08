@@ -5,6 +5,7 @@ dec [2kcnt], [gk.code.old], [rgk.errorcode], [rc.counter3], [rc.ppos], [CODES], 
 [eol] = ''
 [Echo_Title] = 'SHiFT Code-Manager'
 [Confirm_Title] = 'SHiFT Code-Manager'
+[actual.version] = '1.2'
 rem if [command] ! '' & [command] ! 'debugmode'
 rem 	echo 'What are you trying? If you want to use this program, just start it without any parameters or drag and drops!'
 rem 	halt
@@ -61,6 +62,7 @@ proc clearfiles
 	delfile 'points.txt'
 	delfile 'cookie.txt'
 	delfile 'login.txt'
+	delfile 'version.txt'
 endproc
 
 clearfiles
@@ -1105,18 +1107,51 @@ func xsession: [xs.input]
 	ret [xs.session]
 endfunc
 
+proc checkversion
+	console 'write', 'Checking for new version...'
+	call 'curl.exe -X GET https://raw.githubusercontent.com/SurrendeR1993/SHiFT-Code-Manager/master/version.json -i -o version.txt', 'hide'
+	fileexists [cv.exists] = 'version.txt'
+	if [cv.exists] = [true]
+		httpresponse [cv.response] = 'version.txt'
+		if [cv.response] = '200 OK'
+			readfile [cv.content] = 'version.txt', '0'
+			json [cv.newversion] = [cv.content], '"version"', '1'
+			replacevar [cv.newversion] = [cv.newversion], '"', [null]
+		else
+			console 'continue', 'unexpected response from server...'
+		endif
+		if [cv.newversion] ! [actual.version]
+			console 'continue', 'version '#[cv.newversion]#' available!'
+			confirm [cv.confirm] = 'New version '#[cv.newversion]#' is available!'#[new_line]#'It is highly recommended to download the newest version.'#[new_line]#'Would you like to visit GitHub?'
+			if [cv.confirm] = [true]
+				console 'write', 'Opening GitHub...'
+				open 'https://github.com/SurrendeR1993/SHiFT-Code-Manager'
+			else
+				console 'write', 'New version ignored. Please update as soon as possible!'
+				echo 'Please update as soon as possible!'
+			endif
+		else
+			console 'continue', 'up to date.'
+		endif
+	else
+		console 'continue', 'GitHub connection failed.'
+	endif
+	delfile 'version.txt'
+endproc
+
 fileexists [curl] = 'curl.exe'
 if [curl] ! [true]
 	echo 'You need curl for windows to use this program. Please google for it and copy the program into this directory.'
 	halt
 endif
 console 'enable', ''
+checkversion
 
 %login
 deldialog 'SHiFT Code-Manager'
 rem --- creating code for widget "SHiFT Code-Manager [LOGIN]"
 newdialog 'SHiFT Code-Manager [LOGIN]', 'DIALOG', '648|413|407|175'
-letdialog 'SHiFT Code-Manager [LOGIN]', 'caption', 'SHiFT Code-Manager 1.1 [LOGIN]'
+letdialog 'SHiFT Code-Manager [LOGIN]', 'caption', 'SHiFT Code-Manager v'#[actual.version]#' [LOGIN]'
 letdialog 'SHiFT Code-Manager [LOGIN]', 'STYLE', 'DIALOG'
 
 rem --- creating code for widget "savedlogin"
@@ -1379,7 +1414,7 @@ letdialog 'SHiFT Code-Manager:vc', 'caption', 'Vault Code'
 letdialog 'SHiFT Code-Manager:vc', 'checked', [false]
 
 rem --- creating code for widget "redeemgroup"
-newdialog 'SHiFT Code-Manager:redeemgroup', 'GROUP', '10|120|390|45'
+newdialog 'SHiFT Code-Manager:redeemgroup', 'GROUP', '10|120|395|45'
 letdialog 'SHiFT Code-Manager:redeemgroup', 'caption', 'Codes'
 
 rem --- creating code for widget "email"
@@ -1398,7 +1433,7 @@ letdialog 'SHiFT Code-Manager:gk', 'caption', 'SHiFT Code'
 letdialog 'SHiFT Code-Manager:gk', 'checked', [false]
 
 rem --- creating code for widget "redeem"
-newdialog 'SHiFT Code-Manager:redeem', 'BUTTON', '330|137|65|20'
+newdialog 'SHiFT Code-Manager:redeem', 'BUTTON', '335|137|65|20'
 letdialog 'SHiFT Code-Manager:redeem', 'caption', 'Redeem'
 letdialog 'SHiFT Code-Manager:redeem', 'font', 'X|8|2'
 
@@ -1413,7 +1448,7 @@ letdialog 'SHiFT Code-Manager:refresh', 'caption', 'Refresh'
 letdialog 'SHiFT Code-Manager:refresh', 'font', 'X|8|2'
 
 rem --- creating code for widget "help"
-newdialog 'SHiFT Code-Manager:help', 'BUTTON', '410|135|100|20'
+newdialog 'SHiFT Code-Manager:help', 'BUTTON', '410|137|100|20'
 letdialog 'SHiFT Code-Manager:help', 'caption', 'Help/Info/About'
 letdialog 'SHiFT Code-Manager:help', 'font', 'X|8|2'
 centerdialog 'SHiFT Code-Manager'
