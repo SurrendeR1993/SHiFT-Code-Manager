@@ -5,7 +5,7 @@ dec [2kcnt], [gk.code.old], [rgk.errorcode], [rc.counter3], [rc.ppos], [CODES], 
 [eol] = ''
 [Echo_Title] = 'SHiFT Code-Manager'
 [Confirm_Title] = 'SHiFT Code-Manager'
-[actual.version] = '1.2'
+[actual.version] = '1.3'
 rem if [command] ! '' & [command] ! 'debugmode'
 rem 	echo 'What are you trying? If you want to use this program, just start it without any parameters or drag and drops!'
 rem 	halt
@@ -71,7 +71,7 @@ func httpresponse: [http.response.file]
 	[http.response.return] = [null]
 	readfile [http.response.out] = [http.response.file], '1'
 	if [errorcode] = [false]
-		[http.response.out] = 'R/W_Error'
+		[http.response.return] = 'R/W_Error'
 		goto 'http.return'
 	endif
 	gettok [http.response.out] = [http.response.out], ' ', '2'
@@ -939,6 +939,10 @@ endfunc
 func getcookie: [getcookie.input]
 	[getcookie.return] = [null]
 	getpos [getcookie.x-ct-redirect.pos] = [getcookie.input], 'x-ct-redirect:', '1'
+	if [getcookie.x-ct-redirect.pos] = '0' & [getcookie.input] ! [null]
+		[getcookie.return] = 'failed_no_redirect'
+		ret [getcookie.return]
+	endif
 	getlen [getcookie.x-ct-redirect.len] = 'x-ct-redirect:'
 	[getcookie.counter] = '0'
 	[getcookie.redirect] = [null]
@@ -954,7 +958,7 @@ func getcookie: [getcookie.input]
 	until [getcookie.charat] = [new_line]
 	replacevar [getcookie.redirect] = [getcookie.redirect], [carriagereturn], [null]
 	replacevar [getcookie.redirect] = [getcookie.redirect], [linefeed], [null]
-	call 'curl.exe -X GET '#[getcookie.redirect]#' -H "Referer: https://borderlands.com/en-US" -H "Origin: https://borderlands.com" -i -o cookie.txt', 'hide'
+	call 'curl.exe -X HEAD '#[getcookie.redirect]#' -H "Referer: https://borderlands.com/en-US" -H "Origin: https://borderlands.com" -i -o cookie.txt', 'hide'
 	readfile [getcookie.header] = 'cookie.txt', '0'
 	httpresponse [getcookie.response] = 'cookie.txt'
 	delfile 'cookie.txt'
@@ -1498,12 +1502,15 @@ console 'write', 'Getting Session-Data...'
 getcookie [cookie] = [login.data]
 if [cookie] = 'failed'
 	[Confirm_Title] = 'Whoopsie! Try again?'
-	confirm [retry] = 'Failed to get session, but it is necessary!'#[new_line]#'Would you like to log in again? Otherwise program will quit.'
+	confirm [retry] = 'Failed to get session, but it is necessary!'#[new_line]#'Would you like to log in and to try it again? Otherwise the tool will quit.'
 	if [retry] = [true]
 		goto 'login'
 	else
-		halt
+		goto 'exit'
 	endif
+elseif [cookie] = 'failed_no_redirect'
+	echo 'It was not possible to get the session but the performed login was successfull.'#[new_line]#'Are you signed to the Vault Insider Program? If not, please goto "borderlands.com", login there and sign up for the VIP, because this is necessary to use this tool. After you have done this, you can restart SHiFT Code-Manager!'
+	goto 'exit'
 endif
 console 'continue', 'SUCCESS!'
 %refresh

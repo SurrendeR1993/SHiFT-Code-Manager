@@ -1,0 +1,10 @@
+##################
+##	Changelog	##
+##################
+11/11/2019
++information about the needing of the signup for the Vault Insider Program if it is not done yet
+=fixed wrong handling of non readable/existing files
+
+08/11/2019
++versioncheck
+=fixed overlapping "SHiFT-Code"-Text
