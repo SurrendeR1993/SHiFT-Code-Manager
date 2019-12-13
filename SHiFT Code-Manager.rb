@@ -1,20 +1,96 @@
 rem Written in Rapidbatch: http://rb5.phorward-software.com/
 include 'dialog.rb'
-dec [2kcnt], [gk.code.old], [rgk.errorcode], [rc.counter3], [rc.ppos], [CODES], [Confirm_Title], [Echo_Title], [carriagereturn], [case_sensitivity], [cnt], [code], [console], [cookie], [count.appear], [creatorcheck], [current], [cw.command], [cw.data], [cw.old], [cw.output], [data.email], [data.line], [data.out2], [data.out], [decrypt.counter], [decrypt.decryptedchar], [decrypt.input], [decrypt.key], [decrypt.maxchar], [decrypt.return], [decrypt.tok], [dispname], [editdata.cnt], [editdata.delete], [editdata.email], [editdata.encryptedpw], [editdata.password], [editdata.return], [editdata.todo], [email.cnt], [email], [emailcheck], [emaillist], [encrypt.char], [encrypt.chr], [encrypt.counter], [encrypt.encryptedchar], [encrypt.input], [encrypt.inputlen], [encrypt.random], [encrypt.return], [encrypt.salt], [epiccnt], [exit], [facebookcnt], [filepw], [found], [getcookie.charat], [getcookie.cookie.len], [getcookie.cookie.pos], [getcookie.cookie], [getcookie.counter2], [getcookie.counter], [getcookie.header], [getcookie.input], [getcookie.redirect], [getcookie.response], [getcookie.return], [getcookie.x-ct-redirect.counter], [getcookie.x-ct-redirect.len], [getcookie.x-ct-redirect.pos], [getpoints.data], [getpoints.input], [getpoints.redpoints], [getpoints.return], [getpoints.totalpoints], [1.cookie], [getredeemed.counter], [getredeemed.creator], [getredeemed.creatorcnt], [getredeemed.creatorlist], [getredeemed.email], [getredeemed.emailcnt], [getredeemed.emaillist], [getredeemed.notes:'250'], [getredeemed.response], [getredeemed.return], [getredeemed.stop], [getredeemed.title:'250'], [getredeemed.vault], [getredeemed.vaultcnt], [getredeemed.vaultlist], [gkcheck], [http.response.file], [http.response.out], [http.response.return], [json.arg.len], [json.arg], [json.charat], [json.clamp.close], [json.clamp.counter], [json.clamp.open], [json.clampmode], [json.cnt], [json.halt], [json.input.pos], [json.input], [json.pos.counter], [json.return], [linefeed], [login.data], [platforms], [playstationcnt], [points], [pwd], [rc.cntvar], [rc.counter2], [rc.counter], [rc.creatorcheck], [rc.emailcheck], [rc.found], [rc.gk.len], [rc.gk.raw.entry], [rc.gk.raw.exit], [rc.gk.raw.list], [rc.gk.raw], [rc.gkcheck], [rc.newcode.code:'250'], [rc.newcode.type:'250'], [rc.newcode.value:'250'], [rc.newcode], [rc.newcodes.raw], [rc.quit], [rc.redcodes.creator:'250'], [rc.redcodes.creator], [rc.redcodes.email:'250'], [rc.redcodes.email], [rc.redcodes.raw], [rc.redcodes.vault:'250'], [rc.redcodes.vault], [rc.repeat.quit], [rc.response], [rc.return], [rc.tok], [rc.vaultcheck], [redcc], [redcodes.data], [redcodescomplete], [redec], [redpoints], [redres], [redvc], [result], [retry], [rgk.jobid], [rgk.key], [rgk.platform], [rgk.return], [rgk.tmp], [save.login], [saved.data], [schmeissweg], [selected.username], [shiftid], [status], [steamcnt], [totpoints], [twitchcnt], [twittercnt], [userline], [xboxcnt], [xs.cntcom], [xs.cntvar], [xs.counter], [xs.data], [xs.input], [xs.session], [xsession]
+dec [2kcnt], [gk.code.old], [rgk.errorcode], [rc.counter3], [rc.ppos], [CODES], [Confirm_Title], [Echo_Title], [carriagereturn], [case_sensitivity], [cnt], [code], [console], [cookie], [count.appear], [creatorcheck], [cw.command], [cw.data], [cw.old], [cw.output], [data.email], [data.line], [data.out2], [data.out], [decrypt.counter], [decrypt.decryptedchar], [decrypt.input], [decrypt.key], [decrypt.maxchar], [decrypt.return], [decrypt.tok], [dispname], [editdata.cnt], [editdata.delete], [editdata.email], [editdata.encryptedpw], [editdata.password], [editdata.return], [editdata.todo], [email.cnt], [email], [emailcheck], [emaillist], [encrypt.char], [encrypt.chr], [encrypt.counter], [encrypt.encryptedchar], [encrypt.input], [encrypt.inputlen], [encrypt.random], [encrypt.return], [encrypt.salt], [epiccnt], [exit], [facebookcnt], [filepw], [found], [getcookie.charat], [getcookie.cookie.len], [getcookie.cookie.pos], [getcookie.cookie], [getcookie.counter2], [getcookie.counter], [getcookie.header], [getcookie.input], [getcookie.redirect], [getcookie.response], [getcookie.return], [getcookie.x-ct-redirect.counter], [getcookie.x-ct-redirect.len], [getcookie.x-ct-redirect.pos], [getpoints.data], [getpoints.input], [getpoints.redpoints], [getpoints.return], [getpoints.totalpoints], [1.cookie], [getredeemed.counter], [getredeemed.creator], [getredeemed.creatorcnt], [getredeemed.creatorlist], [getredeemed.email], [getredeemed.emailcnt], [getredeemed.emaillist], [getredeemed.notes:'250'], [getredeemed.response], [getredeemed.return], [getredeemed.stop], [getredeemed.title:'250'], [getredeemed.vault], [getredeemed.vaultcnt], [getredeemed.vaultlist], [gkcheck], [http.response.file], [http.response.out], [http.response.return], [json.arg.len], [json.arg], [json.charat], [json.clamp.close], [json.clamp.counter], [json.clamp.open], [json.clampmode], [json.cnt], [json.halt], [json.input.pos], [json.input], [json.pos.counter], [json.return], [linefeed], [login.data], [platforms], [playstationcnt], [points], [pwd], [rc.cntvar], [rc.counter2], [rc.counter], [rc.creatorcheck], [rc.emailcheck], [rc.found], [rc.gk.len], [rc.gk.raw.entry], [rc.gk.raw.exit], [rc.gk.raw.list], [rc.gk.raw], [rc.gkcheck], [rc.newcode.code:'250'], [rc.newcode.type:'250'], [rc.newcode.value:'250'], [rc.newcode], [rc.newcodes.raw], [rc.quit], [rc.redcodes.creator:'250'], [rc.redcodes.creator], [rc.redcodes.email:'250'], [rc.redcodes.email], [rc.redcodes.raw], [rc.redcodes.vault:'250'], [rc.redcodes.vault], [rc.repeat.quit], [rc.response], [rc.return], [rc.tok], [rc.vaultcheck], [redcc], [redcodes.data], [redcodescomplete], [redec], [redpoints], [redres], [redvc], [result], [retry], [rgk.jobid], [rgk.key], [rgk.platform], [rgk.return], [rgk.tmp], [save.login], [saved.data], [schmeissweg], [selected.username], [shiftid], [status], [steamcnt], [totpoints], [twitchcnt], [twittercnt], [userline], [xboxcnt], [xs.cntcom], [xs.cntvar], [xs.counter], [xs.data], [xs.input], [xs.session], [xsession]
 [case_sensitivity] = [false]
 [eol] = ''
 [Echo_Title] = 'SHiFT Code-Manager'
 [Confirm_Title] = 'SHiFT Code-Manager'
-[actual.version] = '1.3'
-rem if [command] ! '' & [command] ! 'debugmode'
-rem 	echo 'What are you trying? If you want to use this program, just start it without any parameters or drag and drops!'
-rem 	halt
-rem elseif [command] = 'debugmode'
-rem 	msgbox 'DEBUG-MODE ENABLED', 'Debug-Mode is enabled. Please do what causes the problem and send the content of the console or of the debug.txt to me.', '64'
-rem 	[debugmode] = [true]
-rem endif
+[actual.version] = '1.5'
+
+delfile 'console.txt'
+
+proc silent: [s.user], [s.options]
+	%onlinecheck
+	call 'curl.exe -X GET http://www.google.com -i -o onlinecheck.txt', 'hide'
+	fileexists [s.onlinecheck] = 'onlinecheck.txt'
+	if [s.onlinecheck] = [true]
+		delfile 'onlinecheck.txt'
+		getpassword [s.pw] = [s.user]
+		if [s.pw] ! 'USER_NOT_FOUND'
+			login [s.return] = [s.user], [s.pw]
+			readfile [s.logindata] = 'login.txt', '0'
+			getcookie [s.cookie] = [s.logindata]
+			if [s.return] = 'LOGIN_SUCCEEDED'
+				xsession [s.xsession] = 'login.txt'
+				if [s.xsession] ! 'failed'
+					delfile 'login.txt'
+					gettok [s.vault] = [s.options], '|', '1'
+					replacevar [s.vault] = [s.vault], [s.user], ''
+					gettok [s.email] = [s.options], '|', '2'
+					gettok [s.creator] = [s.options], '|', '3'
+					gettok [s.gk] = [s.options], '|', '4'
+					gettok [s.vip] = [s.options], '|', '5'
+					getpoints [s.points] = [s.cookie]
+					redeemcodes [result] = [s.vault], [s.email], [s.creator], [s.gk], [s.vip], [s.cookie]
+					refresh [s.points] = [s.points], [s.cookie]
+					logout [s.logout.status] = [s.xsession], [true]
+				endif
+			endif
+		endif
+	else
+		wait '10000'
+		goto 'onlinecheck'
+	endif
+endproc
+
+func getpassword: [gp.username]
+	[gp.cnt] = '0'
+	[gp.varcnt] = '0'
+	[gp.exit] = [false]
+	fileexists [errorcode] = 'data.dat'
+	if [errorcode] ! [false]
+		repeat
+			[gp.cnt] + '1'
+			readfile [gp.data] = 'data.dat', [gp.cnt]
+			if [gp.data] ! 'EOF'
+				cntvar [gp.varcnt] = [gp.data], [gp.username]
+			endif
+			if [gp.varcnt] = '1'
+				gettok [gp.pw] = [gp.data], '=', '2'
+				decryptpw [gp.decrypt] = [gp.pw]
+				ret [gp.decrypt]
+			endif
+			if [gp.data] = 'EOF'
+				[gp.exit] = [true]
+				ret 'USER_NOT_FOUND'
+			endif
+		until [gp.exit] = [true]
+	endif
+endfunc
+
+func login: [login.email], [login.password]
+		call 'curl.exe -X POST https://api.2k.com/borderlands/users/authenticate -H "Content-Type: application/json;charset=UTF-8" -H "Origin: https://borderlands.com" -H "Referer: https://borderlands.com/en-US/vip/" -d "{\"username\":\"'#[login.email]#'\",\"password\":\"'#[login.password]#'\"}" -i -o login.txt', 'hide'
+		httpresponse [login.rescode] = 'login.txt'
+		if [login.rescode] = '403 Forbidden'
+			echo 'Login failed. Wrong E-Mail/Password.'
+			ret 'LOGIN_FAILED'
+		elseif [login.rescode] = 'R/W_Error'
+			echo 'Could not save login data. Do you need admin privilegs to write to files in this folder? Logged in anyway.'
+			ret 'LOGIN_SUCCEEDED'
+		elseif [login.rescode] = ''
+			echo 'Got no response from the server. Please check your internet connection!'
+			ret 'LOGIN_FAILED'
+		elseif [login.rescode] ! '200 OK'
+			echo 'Unexpected response from the server. (HTTP Code: '#[login.rescode]#')'
+			ret 'LOGIN_FAILED'
+		elseif [login.rescode] = '200 OK'
+			console 'continue', 'SUCCESS!'
+			ret 'LOGIN_SUCCEEDED'
+		endif
+endfunc
 
 proc console: [cw.command], [cw.data]
+	writefile 'console.txt', [cw.data]#''#[new_line]
 	if [cw.command] = 'enable'
 		rem --- creating code for widget "SHiFT Code-Manager [CONSOLE]"
 		newdialog 'SHiFT Code-Manager [CONSOLE]', 'DIALOG', '0|0|519|394'
@@ -63,6 +139,9 @@ proc clearfiles
 	delfile 'cookie.txt'
 	delfile 'login.txt'
 	delfile 'version.txt'
+	delfile 'activities2.txt'
+	delfile 'vipactivities.txt'
+	delfile 'vipactres.txt'
 endproc
 
 clearfiles
@@ -295,16 +374,27 @@ func json: [json.input], [json.arg], [json.cnt]
 	ret [json.return]
 endfunc
 
-func logout: [lo.xsession]
+func logout: [lo.xsession], [lo.quit]
+	[points] = ''
+	console 'write', 'Logging out...'
 	call 'curl.exe -X DELETE https://api.2k.com/borderlands/users/me -H "Content-Type: application/json;charset=UTF-8" -H "Origin: https://borderlands.com" -H "Referer: https://borderlands.com/en-US/vip/" -H "X-SESSION: '#[lo.xsession]#'" -i -o logoff.txt', 'hide'
-	httpresponse [lo.return] = 'logoff.txt'
+	httpresponse [lo.response] = 'logoff.txt'
 	delfile 'logoff.txt'
-	if [lo.return] ! '200 OK'
-		[lo.return] = 'failed'
+	wait '200'
+	if [lo.response] ! '200 OK'
+		console 'continue', 'failed'
+		confirm [lo.retry] = 'Logout was not successfully. It is safer to logout correctly, but you can also just continue. Do you want to retry?'
+		if [lo.retry] = [true]
+			logout [lo.null] = [lo.xsession], [lo.quit]
+		endif
 	else
-		[lo.return] = 'success'
+		console 'continue', 'SUCCESS!'
 	endif
-	ret [lo.return]
+	if [lo.quit] = [true]
+		goto 'exit'
+	else
+		goto 'login'
+	endif
 endfunc
 
 proc gkwrite: [gk.code]
@@ -417,381 +507,600 @@ func getredeemed: [gr.cookie]
 	ret [gr.return]
 endfunc
 
-func redeemcodes: [rc.vaultcheck], [rc.emailcheck], [rc.creatorcheck], [rc.gkcheck]
-	[rc.redeemvip] = [false]
-	getredeemed [rc.redcodes.raw] = [cookie]
-	console 'write', 'Preparing already redeemed codes...'
-	if [rc.vaultcheck] = [true]
-		gettok [rc.redcodes.vault] = [rc.redcodes.raw], '=-\', '1'
-		[rc.counter] = '0'
-		[rc.redeemvip] = [true]
+func redeemcodes: [rc.vaultcheck], [rc.emailcheck], [rc.creatorcheck], [rc.gkcheck], [rc.vipcheck], [rc.cookie]
+	if [rc.vipcheck] = [true]
+		console 'write', 'Getting activity data...'
+		getactivities [rc.activities] = [rc.cookie]
+		[rc.cnt] = '0'
+		cntvar [rc.actnamecnt] = [rc.activities], '"name"'
+		console 'write', 'Filter activity names (1 of '#[rc.actnamecnt]#')...'
 		repeat
-			[rc.counter] + '1'
-			gettok [rc.redcodes.vault:[rc.counter]] = [rc.redcodes.vault], '|', '1'
-			replacevar [rc.redcodes.vault] = [rc.redcodes.vault], [rc.redcodes.vault:[rc.counter]]#'|', ''
-			upvar [rc.redcodes.vault:[rc.counter]] = [rc.redcodes.vault:[rc.counter]]
-		until [rc.redcodes.vault:[rc.counter]] = ''
-	endif
-	if [rc.emailcheck] = [true]
-		gettok [rc.redcodes.email] = [rc.redcodes.raw], '=-\', '2'
-		[rc.counter] = '0'
-		[rc.redeemvip] = [true]
-		repeat
-			[rc.counter] + '1'
-			gettok [rc.redcodes.email:[rc.counter]] = [rc.redcodes.email], '|', '1'
-			replacevar [rc.redcodes.email] = [rc.redcodes.email], [rc.redcodes.email:[rc.counter]]#'|', ''
-			upvar [rc.redcodes.email:[rc.counter]] = [rc.redcodes.email:[rc.counter]]
-		until [rc.redcodes.email:[rc.counter]] = ''
-	endif
-	if [rc.creatorcheck] = [true]
-		gettok [rc.redcodes.creator] = [rc.redcodes.raw], '=-\', '3'
-		[rc.counter] = '0'
-		[rc.redeemvip] = [true]
-		repeat
-			[rc.counter] + '1'
-			gettok [rc.redcodes.creator:[rc.counter]] = [rc.redcodes.creator], '|', '1'
-			replacevar [rc.redcodes.creator] = [rc.redcodes.creator], [rc.redcodes.creator:[rc.counter]]#'|', ''
-			upvar [rc.redcodes.creator:[rc.counter]] = [rc.redcodes.creator:[rc.counter]]
-		until [rc.redcodes.creator:[rc.counter]] = ''
-	endif
-	if [rc.gkcheck] = [true]
-		[rc.counter] = '0'
-		gettok [rc.redcodes.gk] = [rc.redcodes.raw], '=-\', '4'
-		if [rc.redcodes.gk] ! ''
-			repeat
-				[rc.counter] + '1'
-				gettok [rc.redcodes.gk:[rc.counter]] = [rc.redcodes.gk], '|', '1'
-				replacevar [rc.redcodes.gk] = [rc.redcodes.gk], [rc.redcodes.gk:[rc.counter]]#'|', ''
-				upvar [rc.redcodes.gk:[rc.counter]] = [rc.redcodes.gk:[rc.counter]]
-			until [rc.redcodes.gk:[rc.counter]] = ''
-		endif
-	endif
-	console 'continue', 'DONE!'
-	[rc.redcodes.raw] = [null]
-	if [rc.redeemvip] = [true]
-		console 'write', 'Data provided by Orcicorns SHiFT and VIP Code archive. Visit him on Twitter: https://twitter.com/orcicorn'
-		console 'write', 'Getting new VIP Codes...'
-		call 'curl.exe -X GET https://shift.orcicorn.com/vip-code/index.json -i -o activevipcodes.txt', 'hide'
-		httpresponse [rc.response] = 'activevipcodes.txt'
-		if [rc.response] = '403 Forbidden'
-			echo 'Server had forbid the access. Could not get new codes. There is nothing you can do.'
-			[rc.return] = 'failed'
-		elseif [rc.response] = 'R/W_Error'
-			echo 'Cannot read file. Do you need Admin Privilegs in this folder?'
-			[rc.return] = 'failed'
-		elseif [rc.response] ! '200 OK'
-			echo 'Unexpected Response from Server! '#[rc.response]
-			[rc.return] = 'failed'
-		endif
-		if [rc.return] = 'failed'
-			goto 'rc.end'
-		endif
-		console 'continue', 'SUCCESS!'
-		console 'write', 'Filtering and sorting new VIP codes...'
-		readfile [rc.data] = 'activevipcodes.txt', '0'
-		delfile 'activevipcodes.txt'
-		jsoncontent [rc.data] = [rc.data]
-		cntvar [rc.code.counter] = [rc.data], '"code"'
-		getpos [rc.pos] = [rc.data], '[', '2'
-		[rc.counter2] = '0'
-		console 'write', 'Processing VIP-Code 1 of '#[rc.code.counter]
-		repeat
-			[rc.counter] = [rc.pos]
-			[rc.open] = '0'
-			[rc.close] = '0'
-			[rc.string] = [null]
-			repeat
-				[rc.counter] + '1'
-				getcharat [rc.charat] = [rc.data], [rc.counter]
-				if [rc.charat] = '{'
-					[rc.open] + '1'
+			[rc.cnt] + '1'
+			console 'rewrite', 'Filter activity names ('#[rc.cnt]#' of '#[rc.actnamecnt]#' Activities)...'
+			json [rc.actname] = [rc.activities], '"name"', [rc.cnt]
+			if [rc.actname] ! 'JSONARG_NOT_IN_INPUT'
+				replacevar [rc.actname] = [rc.actname], '"', '\"'
+				if [rc.cnt] = '1'
+					[rc.actnames] = ''#[rc.actname]#''
+				else
+					[rc.actnames] = [rc.actnames]#','#[rc.actname]#''
 				endif
-				if [rc.charat] = '}'
-					[rc.close] + '1'
-				endif
-				[rc.string] = [rc.string]#''#[rc.charat]
-			until [rc.open] = [rc.close]
-			[rc.counter2] + '1'
-			json [rc.newcode.code:[rc.counter2]] = [rc.data], '"code"', '1'
-			if [rc.newcode.code:[rc.counter2]] ! 'JSONARG_NOT_IN_INPUT'
-				console 'rewrite', 'Processing VIP-Code '#[rc.counter2]#' of '#[rc.code.counter]
-				upvar [rc.newcode.code:[rc.counter2]] = [rc.newcode.code:[rc.counter2]]
-				replacevar [rc.newcode.code:[rc.counter2]] = [rc.newcode.code:[rc.counter2]], '"', ''
-				json [rc.newcode.platform:[rc.counter2]] = [rc.data], '"platform"', '1'
-				upvar [rc.newcode.platform:[rc.counter2]] = [rc.newcode.platform:[rc.counter2]]
-				replacevar [rc.newcode.platform:[rc.counter2]] = [rc.newcode.platform:[rc.counter2]], '"', ''
-				json [rc.newcode.reward:[rc.counter2]] = [rc.data], '"reward"', '1'
-				replacevar [rc.newcode.reward:[rc.counter2]] = [rc.newcode.reward:[rc.counter2]], '"', ''
-				json [rc.newcode.type:[rc.counter2]] = [rc.data], '"type"', '1'
-				upvar [rc.newcode.type:[rc.counter2]] = [rc.newcode.type:[rc.counter2]]
-				replacevar [rc.newcode.type:[rc.counter2]] = [rc.newcode.type:[rc.counter2]], '"', ''
-				replacevar [rc.data] = [rc.data], [rc.string]#',', [null]
-				replacevar [rc.data] = [rc.data], [rc.string], [null]				
 			endif
-		until [rc.newcode.code:[rc.counter2]] = 'JSONARG_NOT_IN_INPUT'
-	endif
-	if [rc.gkcheck] = [true]
-		console 'write', 'Data provided by Orcicorns SHiFT and VIP Code archive. Visit him on Twitter: https://twitter.com/orcicorn'
-		console 'write', 'Getting new SHiFT Codes...'
-		call 'curl.exe -X GET https://shift.orcicorn.com/shift-code/index.json -i -o activeshiftcodes.txt', 'hide'
-		httpresponse [rc.response] = 'activeshiftcodes.txt'
-		if [rc.response] = '403 Forbidden'
-			echo 'Server had forbid the access. Could not get new codes. There is nothing you can do.'
-			[rc.return] = 'failed'
-		elseif [rc.response] = 'R/W_Error'
-			echo 'Cannot read file. Do you need Admin Privilegs in this folder?'
-			[rc.return] = 'failed'
-		elseif [rc.response] ! '200 OK'
-			echo 'Unexpected Response from Server! '#[rc.response]
-			[rc.return] = 'failed'
-		endif
-		if [rc.return] = 'failed'
-			goto 'rc.end'
-		endif
-		console 'continue', 'SUCCESS!'
-		console 'write', 'Filtering and sorting new SHiFT codes...'
-		readfile [rc.data] = 'activeshiftcodes.txt', '0'
-		delfile 'activeshiftcodes.txt'
-		jsoncontent [rc.data] = [rc.data]
-		cntvar [rc.code.counter] = [rc.data], '"code"'
-		getpos [rc.pos] = [rc.data], '[', '2'
-		if [rc.redeemvip] = [true]
-			[rc.counter2] - '1'
-		else
+		until [rc.actname] = 'JSONARG_NOT_IN_INPUT'
+		console 'write', 'Getting user-related activity data...'
+		call 'curl.exe -X POST https://2kgames.crowdtwist.com/request?widgetId=9446 -H "Content-Type: application/json;charset=UTF-8" -H "Origin: https://2kgames.crowdtwist.com" -H "Referer: https://2kgames.crowdtwist.com/widgets/t/activity-list/9446" -H "Cookie: '#[rc.cookie]#'" -d "{\"model_data\":{\"activity\":{\"activities\":{\"properties\":[\"link_href\",\"name\",\"num_points\",\"user_activity_status\"],\"query\":{\"type\":\"activities_by_name\",\"args\":{\"names\":['#[rc.actnames]#']}}}}}}" -i -o activities2.txt', 'hide'
+		httpresponse [rc.response] = 'activities2.txt'
+		if [rc.response] = '200 OK'
+			console 'continue', 'DONE!'
+			readfile [rc.activitydata] = 'activities2.txt', '0'
+			delfile 'activities2.txt'
+			jsoncontent [rc.activitydata] = [rc.activitydata]
+			cntvar [rc.actnamecnt2] = [rc.activitydata], '"name"'
+			console 'write', 'Processing activity 1 of '#[rc.actnamecnt2]#'...'
 			[rc.counter] = '0'
-		endif
-		[rc.counter3] = '0'
-		console 'rewrite', 'Processing SHiFT-Code 1 of '#[rc.code.counter]
-		repeat
-			[rc.counter] = [rc.pos]
-			[rc.open] = '0'
-			[rc.close] = '0'
-			[rc.string] = [null]
+			[rc.counter2] = '0'
 			repeat
 				[rc.counter] + '1'
-				getcharat [rc.charat] = [rc.data], [rc.counter]
-				if [rc.charat] = '{'
-					[rc.open] + '1'
+				console 'rewrite', 'Processing activity '#[rc.counter]#' of '#[rc.actnamecnt2]#'...'
+				json [rc.activity.cap] = [rc.activitydata], '"has_reached_freq_cap"', [rc.counter]
+				if [rc.activity.cap] = 'f'
+					[rc.counter2] + '1'
+					json [rc.activity.link:[rc.counter2]] = [rc.activitydata], '"link_href"', [rc.counter]
+					replacevar [rc.activity.link:[rc.counter2]] = [rc.activity.link:[rc.counter2]], '"', ''
+					[rc.cntvar] = '0'
+					cntvar [rc.cntvar] = [rc.activity.link:[rc.counter2]], 'locale-redirect.html'
+					if [rc.cntvar] = '0'
+						replacevar [rc.activity.link:[rc.counter2]] = [rc.activity.link:[rc.counter2]], '\/', '/'
+						json [rc.activity.name:[rc.counter2]] = [rc.activitydata], '"name"', [rc.counter]
+					else
+						[rc.activity.link:[rc.counter2]] = [null]
+						[rc.counter2] - '1'
+					endif
 				endif
-				if [rc.charat] = '}'
-					[rc.close] + '1'
-				endif
-				[rc.string] = [rc.string]#''#[rc.charat]
-			until [rc.open] = [rc.close]
-			[rc.counter2] + '1'
-			json [rc.newcode.code:[rc.counter2]] = [rc.data], '"code"', '1'
-			if [rc.newcode.code:[rc.counter2]] ! 'JSONARG_NOT_IN_INPUT'
-				[rc.counter3] + '1'
-				console 'rewrite', 'Processing SHiFT-Code '#[rc.counter3]#' of '#[rc.code.counter]
-				upvar [rc.newcode.code:[rc.counter2]] = [rc.newcode.code:[rc.counter2]]
-				replacevar [rc.newcode.code:[rc.counter2]] = [rc.newcode.code:[rc.counter2]], '"', ''
-				json [rc.newcode.platform:[rc.counter2]] = [rc.data], '"platform"', '1'
-				upvar [rc.newcode.platform:[rc.counter2]] = [rc.newcode.platform:[rc.counter2]]
-				replacevar [rc.newcode.platform:[rc.counter2]] = [rc.newcode.platform:[rc.counter2]], '"', ''
-				json [rc.newcode.reward:[rc.counter2]] = [rc.data], '"reward"', '1'
-				replacevar [rc.newcode.reward:[rc.counter2]] = [rc.newcode.reward:[rc.counter2]], '"', ''
-				json [rc.newcode.type:[rc.counter2]] = [rc.data], '"type"', '1'
-				upvar [rc.newcode.type:[rc.counter2]] = [rc.newcode.type:[rc.counter2]]
-				replacevar [rc.newcode.type:[rc.counter2]] = [rc.newcode.type:[rc.counter2]], '"', ''
-				replacevar [rc.data] = [rc.data], [rc.string]#',', [null]
-				replacevar [rc.data] = [rc.data], [rc.string], [null]
+			until [rc.activity.cap] = 'JSONARG_NOT_IN_INPUT'
+			[rc.counter] = '0'
+			if [rc.counter2] ! '0'
+				repeat
+					[rc.counter] + '1'
+					console 'write', 'Doing activity '#[rc.activity.name:[rc.counter]]#'...'
+					call 'curl.exe -X GET '#[rc.activity.link:[rc.counter]]#' -H "Cookie: '#[rc.cookie]#'" -i -o vipactres.txt', 'hide'
+					httpresponse [rc.response] = 'vipactres.txt'
+					delfile 'vipactres.txt'
+					if [rc.response] = '200 OK!'
+						console 'continue', 'SUCCESS!'
+					elseif [rc.response] = '301 Moved Permanently'
+						console 'continue', 'SUCCESS!'
+					else
+						console 'continue', 'FAILED!'
+					endif
+				until [rc.counter] = [rc.counter2]
+			else
+				console 'write', 'No untapped activities at this time!'
 			endif
-		until [rc.newcode.code:[rc.counter2]] = 'JSONARG_NOT_IN_INPUT'
+		endif
 	endif
-	[rc.counter] = '1'
-	[rc.counter2] = '0'
-	[rc.found] = [false]
-	[rc.repeat.quit] = [false]
-	repeat
-		if [rc.newcode.type:[rc.counter]] = 'VIP'
-			if [rc.newcode.platform:[rc.counter]] = 'VAULT' & [rc.vaultcheck] = [true]
-				repeat
-					[rc.counter2] + '1'
-					if [rc.newcode.code:[rc.counter]] = [rc.redcodes.vault:[rc.counter2]]
-						[rc.repeat.quit] = [true]
-						[rc.newcode.code:[rc.counter]] = [null]
-						[rc.newcode.platform:[rc.counter]] = [null]
-						[rc.newcode.reward:[rc.counter]] = [null]
-					endif
-					if [rc.redcodes.vault:[rc.counter2]] = ''
-						[rc.repeat.quit] = [true]
-					endif
-					if [rc.newcode.code:[rc.counter]] = ''
-						[rc.repeat.quit] = [true]
-					endif
-				until [rc.repeat.quit] = [true]
-			elseif [rc.newcode.platform:[rc.counter]] = 'EMAIL' & [rc.emailcheck] = [true]
-				repeat
-					[rc.counter2] + '1'
-					if [rc.newcode.code:[rc.counter]] = [rc.redcodes.email:[rc.counter2]]
-						[rc.repeat.quit] = [true]
-						[rc.newcode.code:[rc.counter]] = [null]
-						[rc.newcode.platform:[rc.counter]] = [null]
-						[rc.newcode.reward:[rc.counter]] = [null]
-					endif
-					if [rc.redcodes.email:[rc.counter2]] = ''
-						[rc.repeat.quit] = [true]
-					endif
-					if [rc.newcode.code:[rc.counter]] = ''
-						[rc.repeat.quit] = [true]
-					endif
-				until [rc.repeat.quit] = [true]
-			elseif [rc.newcode.platform:[rc.counter]] = 'CREATOR' & [rc.creatorcheck] = [true]
-				repeat
-					[rc.counter2] + '1'
-					if [rc.newcode.code:[rc.counter]] = [rc.redcodes.creator:[rc.counter2]]
-						[rc.repeat.quit] = [true]
-						[rc.newcode.code:[rc.counter]] = [null]
-						[rc.newcode.platform:[rc.counter]] = [null]
-						[rc.newcode.reward:[rc.counter]] = [null]
-					endif
-					if [rc.redcodes.creator:[rc.counter2]] = ''
-						[rc.repeat.quit] = [true]
-					endif
-					if [rc.newcode.code:[rc.counter]] = ''
-						[rc.repeat.quit] = [true]
-					endif
-				until [rc.repeat.quit] = [true]
-			endif
-		elseif [rc.newcode.type:[rc.counter]] = 'SHIFT' & [rc.gkcheck] = [false]
-			[rc.newcode.platform:[rc.counter]] = [null]
-			[rc.newcode.code:[rc.counter]] = [null]
-		elseif [rc.newcode.type:[rc.counter]] = 'SHIFT' & [rc.gkcheck] = [true]
+	[rc.checksum] = [rc.vaultcheck] + [rc.emailcheck] + [rc.creatorcheck] + [rc.gkcheck]
+	if [rc.checksum] >= '-3'
+		[rc.redeemvip] = [false]
+		getredeemed [rc.redcodes.raw] = [rc.cookie]
+		console 'write', 'Preparing already redeemed codes...'
+		if [rc.vaultcheck] = [true]
+			gettok [rc.redcodes.vault] = [rc.redcodes.raw], '=-\', '1'
+			[rc.counter] = '0'
+			[rc.redeemvip] = [true]
 			repeat
+				[rc.counter] + '1'
+				gettok [rc.redcodes.vault:[rc.counter]] = [rc.redcodes.vault], '|', '1'
+				replacevar [rc.redcodes.vault] = [rc.redcodes.vault], [rc.redcodes.vault:[rc.counter]]#'|', ''
+				upvar [rc.redcodes.vault:[rc.counter]] = [rc.redcodes.vault:[rc.counter]]
+			until [rc.redcodes.vault:[rc.counter]] = ''
+		endif
+		if [rc.emailcheck] = [true]
+			gettok [rc.redcodes.email] = [rc.redcodes.raw], '=-\', '2'
+			[rc.counter] = '0'
+			[rc.redeemvip] = [true]
+			repeat
+				[rc.counter] + '1'
+				gettok [rc.redcodes.email:[rc.counter]] = [rc.redcodes.email], '|', '1'
+				replacevar [rc.redcodes.email] = [rc.redcodes.email], [rc.redcodes.email:[rc.counter]]#'|', ''
+				upvar [rc.redcodes.email:[rc.counter]] = [rc.redcodes.email:[rc.counter]]
+			until [rc.redcodes.email:[rc.counter]] = ''
+		endif
+		if [rc.creatorcheck] = [true]
+			gettok [rc.redcodes.creator] = [rc.redcodes.raw], '=-\', '3'
+			[rc.counter] = '0'
+			[rc.redeemvip] = [true]
+			repeat
+				[rc.counter] + '1'
+				gettok [rc.redcodes.creator:[rc.counter]] = [rc.redcodes.creator], '|', '1'
+				replacevar [rc.redcodes.creator] = [rc.redcodes.creator], [rc.redcodes.creator:[rc.counter]]#'|', ''
+				upvar [rc.redcodes.creator:[rc.counter]] = [rc.redcodes.creator:[rc.counter]]
+			until [rc.redcodes.creator:[rc.counter]] = ''
+		endif
+		if [rc.gkcheck] = [true]
+			[rc.counter] = '0'
+			gettok [rc.redcodes.gk] = [rc.redcodes.raw], '=-\', '4'
+			if [rc.redcodes.gk] ! ''
+				repeat
+					[rc.counter] + '1'
+					gettok [rc.redcodes.gk:[rc.counter]] = [rc.redcodes.gk], '|', '1'
+					replacevar [rc.redcodes.gk] = [rc.redcodes.gk], [rc.redcodes.gk:[rc.counter]]#'|', ''
+					upvar [rc.redcodes.gk:[rc.counter]] = [rc.redcodes.gk:[rc.counter]]
+				until [rc.redcodes.gk:[rc.counter]] = ''
+			endif
+		endif
+		console 'continue', 'DONE!'
+		[rc.redcodes.raw] = [null]
+		if [rc.redeemvip] = [true]
+			console 'write', 'Data provided by Orcicorns SHiFT and VIP Code archive. Visit him on Twitter!'
+			console 'write', 'Getting new VIP Codes...'
+			call 'curl.exe -X GET https://shift.orcicorn.com/vip-code/index.json -i -o activevipcodes.txt', 'hide'
+			httpresponse [rc.response] = 'activevipcodes.txt'
+			if [rc.response] = '403 Forbidden'
+				echo 'Server had forbid the access. Could not get new codes. There is nothing you can do.'
+				[rc.return] = 'failed'
+			elseif [rc.response] = 'R/W_Error'
+				echo 'Cannot read file. Do you need Admin Privilegs in this folder?'
+				[rc.return] = 'failed'
+			elseif [rc.response] ! '200 OK'
+				echo 'Unexpected Response from Server! '#[rc.response]
+				[rc.return] = 'failed'
+			endif
+			if [rc.return] = 'failed'
+				goto 'rc.end'
+			endif
+			console 'continue', 'SUCCESS!'
+			console 'write', 'Filtering and sorting new VIP codes...'
+			readfile [rc.data] = 'activevipcodes.txt', '0'
+			delfile 'activevipcodes.txt'
+			jsoncontent [rc.data] = [rc.data]
+			cntvar [rc.code.counter] = [rc.data], '"code"'
+			getpos [rc.pos] = [rc.data], '[', '2'
+			[rc.counter2] = '0'
+			console 'write', 'Processing VIP-Code 1 of '#[rc.code.counter]
+			repeat
+				[rc.counter] = [rc.pos]
+				[rc.open] = '0'
+				[rc.close] = '0'
+				[rc.string] = [null]
+				repeat
+					[rc.counter] + '1'
+					getcharat [rc.charat] = [rc.data], [rc.counter]
+					if [rc.charat] = '{'
+						[rc.open] + '1'
+					endif
+					if [rc.charat] = '}'
+						[rc.close] + '1'
+					endif
+					[rc.string] = [rc.string]#''#[rc.charat]
+				until [rc.open] = [rc.close]
 				[rc.counter2] + '1'
-				if [rc.newcode.code:[rc.counter]] = [rc.redcodes.gk:[rc.counter2]]
-					[rc.repeat.quit] = [true]
-					[rc.newcode.code:[rc.counter]] = [null]
-					[rc.newcode.platform:[rc.counter]] = [null]
-					[rc.newcode.reward:[rc.counter]] = [null]
+				json [rc.newcode.code:[rc.counter2]] = [rc.data], '"code"', '1'
+				if [rc.newcode.code:[rc.counter2]] ! 'JSONARG_NOT_IN_INPUT'
+					console 'rewrite', 'Processing VIP-Code '#[rc.counter2]#' of '#[rc.code.counter]
+					upvar [rc.newcode.code:[rc.counter2]] = [rc.newcode.code:[rc.counter2]]
+					replacevar [rc.newcode.code:[rc.counter2]] = [rc.newcode.code:[rc.counter2]], '"', ''
+					json [rc.newcode.platform:[rc.counter2]] = [rc.data], '"platform"', '1'
+					upvar [rc.newcode.platform:[rc.counter2]] = [rc.newcode.platform:[rc.counter2]]
+					replacevar [rc.newcode.platform:[rc.counter2]] = [rc.newcode.platform:[rc.counter2]], '"', ''
+					json [rc.newcode.reward:[rc.counter2]] = [rc.data], '"reward"', '1'
+					replacevar [rc.newcode.reward:[rc.counter2]] = [rc.newcode.reward:[rc.counter2]], '"', ''
+					json [rc.newcode.type:[rc.counter2]] = [rc.data], '"type"', '1'
+					upvar [rc.newcode.type:[rc.counter2]] = [rc.newcode.type:[rc.counter2]]
+					replacevar [rc.newcode.type:[rc.counter2]] = [rc.newcode.type:[rc.counter2]], '"', ''
+					replacevar [rc.data] = [rc.data], [rc.string]#',', [null]
+					replacevar [rc.data] = [rc.data], [rc.string], [null]				
 				endif
-				if [rc.redcodes.gk:[rc.counter2]] = ''
-					[rc.repeat.quit] = [true]
-				endif
-				if [rc.newcode.code:[rc.counter]] = ''
-					[rc.repeat.quit] = [true]
-				endif
-			until [rc.repeat.quit] = [true]
+			until [rc.newcode.code:[rc.counter2]] = 'JSONARG_NOT_IN_INPUT'
 		endif
-		[rc.repeat.quit] = [false]
-		[rc.counter] + '1'
+		if [rc.gkcheck] = [true]
+			console 'write', 'Data provided by Orcicorns SHiFT and VIP Code archive. Visit him on Twitter!'
+			console 'write', 'Getting new SHiFT Codes...'
+			call 'curl.exe -X GET https://shift.orcicorn.com/shift-code/index.json -i -o activeshiftcodes.txt', 'hide'
+			httpresponse [rc.response] = 'activeshiftcodes.txt'
+			if [rc.response] = '403 Forbidden'
+				echo 'Server had forbid the access. Could not get new codes. There is nothing you can do.'
+				[rc.return] = 'failed'
+			elseif [rc.response] = 'R/W_Error'
+				echo 'Cannot read file. Do you need Admin Privilegs in this folder?'
+				[rc.return] = 'failed'
+			elseif [rc.response] ! '200 OK'
+				echo 'Unexpected Response from Server! '#[rc.response]
+				[rc.return] = 'failed'
+			endif
+			if [rc.return] = 'failed'
+				goto 'rc.end'
+			endif
+			console 'continue', 'SUCCESS!'
+			console 'write', 'Filtering and sorting new SHiFT codes...'
+			readfile [rc.data] = 'activeshiftcodes.txt', '0'
+			delfile 'activeshiftcodes.txt'
+			jsoncontent [rc.data] = [rc.data]
+			cntvar [rc.code.counter] = [rc.data], '"code"'
+			getpos [rc.pos] = [rc.data], '[', '2'
+			if [rc.redeemvip] = [true]
+				[rc.counter2] - '1'
+			else
+				[rc.counter] = '0'
+			endif
+			[rc.counter3] = '0'
+			console 'rewrite', 'Processing SHiFT-Code 1 of '#[rc.code.counter]
+			repeat
+				[rc.counter] = [rc.pos]
+				[rc.open] = '0'
+				[rc.close] = '0'
+				[rc.string] = [null]
+				repeat
+					[rc.counter] + '1'
+					getcharat [rc.charat] = [rc.data], [rc.counter]
+					if [rc.charat] = '{'
+						[rc.open] + '1'
+						endif
+					if [rc.charat] = '}'
+						[rc.close] + '1'
+					endif
+					[rc.string] = [rc.string]#''#[rc.charat]
+				until [rc.open] = [rc.close]
+				[rc.counter2] + '1'
+				json [rc.newcode.code:[rc.counter2]] = [rc.data], '"code"', '1'
+				if [rc.newcode.code:[rc.counter2]] ! 'JSONARG_NOT_IN_INPUT'
+					[rc.counter3] + '1'
+					console 'rewrite', 'Processing SHiFT-Code '#[rc.counter3]#' of '#[rc.code.counter]
+					upvar [rc.newcode.code:[rc.counter2]] = [rc.newcode.code:[rc.counter2]]
+					replacevar [rc.newcode.code:[rc.counter2]] = [rc.newcode.code:[rc.counter2]], '"', ''
+					json [rc.newcode.platform:[rc.counter2]] = [rc.data], '"platform"', '1'
+					upvar [rc.newcode.platform:[rc.counter2]] = [rc.newcode.platform:[rc.counter2]]
+					replacevar [rc.newcode.platform:[rc.counter2]] = [rc.newcode.platform:[rc.counter2]], '"', ''
+					json [rc.newcode.reward:[rc.counter2]] = [rc.data], '"reward"', '1'
+					replacevar [rc.newcode.reward:[rc.counter2]] = [rc.newcode.reward:[rc.counter2]], '"', ''
+					json [rc.newcode.type:[rc.counter2]] = [rc.data], '"type"', '1'
+					upvar [rc.newcode.type:[rc.counter2]] = [rc.newcode.type:[rc.counter2]]
+					replacevar [rc.newcode.type:[rc.counter2]] = [rc.newcode.type:[rc.counter2]], '"', ''
+					replacevar [rc.data] = [rc.data], [rc.string]#',', [null]
+					replacevar [rc.data] = [rc.data], [rc.string], [null]
+				endif
+			until [rc.newcode.code:[rc.counter2]] = 'JSONARG_NOT_IN_INPUT'
+		endif
+		[rc.counter] = '1'
 		[rc.counter2] = '0'
-	until [rc.newcode.code:[rc.counter]] = 'JSONARG_NOT_IN_INPUT'
-	console 'write', '...DONE!'
-	[rc.counter] = '0'
-	repeat
-		[rc.counter] + '1'
-		[steamval] = '0'
-		[xboxval] = '0'
-		[psnval] = '0'
-		[epicval] = '0'
-		if [rc.newcode.code:[rc.counter]] ! 'JSONARG_NOT_IN_INPUT'
-			if [rc.newcode.platform:[rc.counter]] = 'VAULT' & [rc.vaultcheck] = [true]
-				console 'write', 'Redeeming VAULT Code "'#[rc.newcode.code:[rc.counter]]#'"...'
-				call 'curl.exe -X POST https://2kgames.crowdtwist.com/code-redemption-campaign/redeem?cid=5261 -H "Content-Type: application/json;charset=UTF-8" -H "Origin: https://borderlands.com" -H "Referer: https://borderlands.com/en-US/vip/" -H "Cookie: '#[cookie]#'" -d "{\"code\":\"'#[rc.newcode.code:[rc.counter]]#'\"}" -i -o redres.txt', 'hide'
-				httpresponse [redres] = 'redres.txt'
-				delfile 'redres.txt'
-				if [redres] ! '200 OK'
-					console 'continue', 'failed! Code is invalid.'
-				elseif [redres] = '200 OK'
-					console 'continue', 'SUCCESS! Your reward: '#[rc.newcode.reward:[rc.counter]]
+		[rc.found] = [false]
+		[rc.repeat.quit] = [false]
+		repeat
+			if [rc.newcode.type:[rc.counter]] = 'VIP'
+				if [rc.newcode.platform:[rc.counter]] = 'VAULT' & [rc.vaultcheck] = [true]
+					repeat
+						[rc.counter2] + '1'
+						if [rc.newcode.code:[rc.counter]] = [rc.redcodes.vault:[rc.counter2]]
+							[rc.repeat.quit] = [true]
+							[rc.newcode.code:[rc.counter]] = [null]
+							[rc.newcode.platform:[rc.counter]] = [null]
+							[rc.newcode.reward:[rc.counter]] = [null]
+						endif
+						if [rc.redcodes.vault:[rc.counter2]] = ''
+							[rc.repeat.quit] = [true]
+						endif
+						if [rc.newcode.code:[rc.counter]] = ''
+							[rc.repeat.quit] = [true]
+						endif
+					until [rc.repeat.quit] = [true]
+				elseif [rc.newcode.platform:[rc.counter]] = 'EMAIL' & [rc.emailcheck] = [true]
+					repeat
+						[rc.counter2] + '1'
+						if [rc.newcode.code:[rc.counter]] = [rc.redcodes.email:[rc.counter2]]
+							[rc.repeat.quit] = [true]
+							[rc.newcode.code:[rc.counter]] = [null]
+							[rc.newcode.platform:[rc.counter]] = [null]
+							[rc.newcode.reward:[rc.counter]] = [null]
+						endif
+						if [rc.redcodes.email:[rc.counter2]] = ''
+							[rc.repeat.quit] = [true]
+						endif
+						if [rc.newcode.code:[rc.counter]] = ''
+							[rc.repeat.quit] = [true]
+						endif
+					until [rc.repeat.quit] = [true]
+				elseif [rc.newcode.platform:[rc.counter]] = 'CREATOR' & [rc.creatorcheck] = [true]
+					repeat
+						[rc.counter2] + '1'
+						if [rc.newcode.code:[rc.counter]] = [rc.redcodes.creator:[rc.counter2]]
+							[rc.repeat.quit] = [true]
+							[rc.newcode.code:[rc.counter]] = [null]
+							[rc.newcode.platform:[rc.counter]] = [null]
+							[rc.newcode.reward:[rc.counter]] = [null]
+						endif
+						if [rc.redcodes.creator:[rc.counter2]] = ''
+							[rc.repeat.quit] = [true]
+						endif
+						if [rc.newcode.code:[rc.counter]] = ''
+							[rc.repeat.quit] = [true]
+						endif
+					until [rc.repeat.quit] = [true]
 				endif
-			elseif [rc.newcode.platform:[rc.counter]] = 'EMAIL' & [rc.emailcheck] = [true]
-				console 'write', 'Redeeming EMAIL Code "'#[rc.newcode.code:[rc.counter]]#'"... '
-				call 'curl.exe -X POST https://2kgames.crowdtwist.com/code-redemption-campaign/redeem?cid=5264 -H "Content-Type: application/json;charset=UTF-8" -H "Origin: https://borderlands.com" -H "Referer: https://borderlands.com/en-US/vip/" -H "Cookie: '#[cookie]#'" -d "{\"code\":\"'#[rc.newcode.code:[rc.counter]]#'\"}" -i -o redres.txt', 'hide'
-				httpresponse [redres] = 'redres.txt'
-				delfile 'redres.txt'
-				if [redres] ! '200 OK'
-					console 'continue', 'failed! Code is invalid.'
-				elseif [redres] = '200 OK'
-					console 'continue', 'SUCCESS! Your reward: '#[rc.newcode.reward:[rc.counter]]
-				endif
-			elseif [rc.newcode.platform:[rc.counter]] = 'CREATOR' & [rc.creatorcheck] = [true]
-				console 'write', 'Redeeming CREATOR Code "'#[rc.newcode.code:[rc.counter]]#'"... '
-				call 'curl.exe -X POST https://2kgames.crowdtwist.com/code-redemption-campaign/redeem?cid=5263 -H "Content-Type: application/json;charset=UTF-8" -H "Origin: https://borderlands.com" -H "Referer: https://borderlands.com/en-US/vip/" -H "Cookie: '#[cookie]#'" -d "{\"code\":\"'#[rc.newcode.code:[rc.counter]]#'\"}" -i -o redres.txt', 'hide'
-				httpresponse [redres] = 'redres.txt'
-				delfile 'redres.txt'
-				if [redres] ! '200 OK'
-					console 'continue', 'failed! Code is invalid.'
-				elseif [redres] = '200 OK'
-					console 'continue', 'SUCCESS! Your reward: '#[rc.newcode.reward:[rc.counter]]
-				endif
-			elseif [rc.newcode.platform:[rc.counter]] = 'UNIVERSAL' & [rc.gkcheck] = [true]
-				[steamval] = '1'
-				[xboxval] = '1'
-				[psnval] = '1'
-				[epicval] = '1'
-			elseif [rc.newcode.platform:[rc.counter]] = 'PLAYSTATION' & [rc.gkcheck] = [true]
-				[psnval] = '1'
-			elseif [rc.newcode.platform:[rc.counter]] = 'XBOX' & [rc.gkcheck] = [true]
-				[xboxval] = '1'
-			elseif [rc.newcode.platform:[rc.counter]] = 'STEAM' & [rc.gkcheck] = [true]
-				[steamval] = '1'
-			endif	
-			if [steamval] = '1' & [steamcnt] >= '1'
-				console 'write', 'Redeeming SHIFT Code '#[rc.newcode.code:[rc.counter]]#' for Steam... '
-				rundialog [schmeissweg] = '1000'
-				redeemgk [status] = 'steam', [rc.newcode.code:[rc.counter]]
-				if [status] = 'SUCCESS'
-					console 'continue', 'success! You got '#[rc.newcode.reward:[rc.counter]]#''
-				elseif [status] = 'FAILED_NOTABLE'
-					confirm [rc.notable.question] = 'It was not possible to redeem "'#[rc.newcode.code:[rc.counter]]#'". Would you like to mark it as redeemed, so the code will be skipped next time?'
-					if [rc.notable.question] = [true]
-						gkwrite [rc.newcode.code:[rc.counter]]
+			elseif [rc.newcode.type:[rc.counter]] = 'SHIFT' & [rc.gkcheck] = [false]
+				[rc.newcode.platform:[rc.counter]] = [null]
+				[rc.newcode.code:[rc.counter]] = [null]
+			elseif [rc.newcode.type:[rc.counter]] = 'SHIFT' & [rc.gkcheck] = [true]
+				repeat
+					[rc.counter2] + '1'
+					if [rc.newcode.code:[rc.counter]] = [rc.redcodes.gk:[rc.counter2]]
+						[rc.repeat.quit] = [true]
+						[rc.newcode.code:[rc.counter]] = [null]
+						[rc.newcode.platform:[rc.counter]] = [null]
+						[rc.newcode.reward:[rc.counter]] = [null]
 					endif
-				elseif [status] = 'EMERGENCY_QUIT'
-					goto 'rc.end'
-				endif
-			endif
-			if [xboxval]  = '1' & [xboxcnt] >= '1'
-				console 'write', 'Redeeming SHIFT Code '#[rc.newcode.code:[rc.counter]]#' for XBOX... '
-				rundialog [schmeissweg] = '1000'
-				redeemgk [status] = 'xboxlive', [rc.newcode.code:[rc.counter]]
-				if [status] = 'SUCCESS'
-					console 'continue', 'success! You got '#[rc.newcode.reward:[rc.counter]]#''
-				elseif [status] = 'FAILED_NOTABLE'
-					confirm [rc.notable.question] = 'It was not possible to redeem "'#[rc.newcode.code:[rc.counter]]#'". Would you like to mark it as redeemed, so the code will be skipped next time?'
-					if [rc.notable.question] = [true]
-						gkwrite [rc.newcode.code:[rc.counter]]
+					if [rc.redcodes.gk:[rc.counter2]] = ''
+						[rc.repeat.quit] = [true]
 					endif
-				elseif [status] = 'EMERGENCY_QUIT'
-					goto 'rc.end'
-				endif
-			endif
-			if [psnval] = '1' & [playstationcnt] >= '1'
-				console 'write', 'Redeeming SHIFT Code '#[rc.newcode.code:[rc.counter]]#' for PlayStation... '
-				rundialog [schmeissweg] = '1000'
-				redeemgk [status] = 'psn', [rc.newcode.code:[rc.counter]]
-				if [status] = 'SUCCESS'
-					console 'continue', 'success! You got '#[rc.newcode.reward:[rc.counter]]#''
-				elseif [status] = 'FAILED_NOTABLE'
-					confirm [rc.notable.question] = 'It was not possible to redeem "'#[rc.newcode.code:[rc.counter]]#'". Would you like to mark it as redeemed, so the code will be skipped next time?'
-					if [rc.notable.question] = [true]
-						gkwrite [rc.newcode.code:[rc.counter]]
+					if [rc.newcode.code:[rc.counter]] = ''
+						[rc.repeat.quit] = [true]
 					endif
-				elseif [status] = 'EMERGENCY_QUIT'
-					goto 'rc.end'
-				endif
+				until [rc.repeat.quit] = [true]
 			endif
-			if [epicval] = '1' & [epiccnt] >= '1'
-				console 'write', 'Redeeming SHIFT Code '#[rc.newcode.code:[rc.counter]]#' for Epic... '
-				rundialog [schmeissweg] = '1000'
-				redeemgk [status] = 'epic', [rc.newcode.code:[rc.counter]]
-				if [status] = 'SUCCESS'
-					console 'continue', 'success! You got '#[rc.newcode.reward:[rc.counter]]#''
+			[rc.repeat.quit] = [false]
+			[rc.counter] + '1'
+			[rc.counter2] = '0'
+		until [rc.newcode.code:[rc.counter]] = 'JSONARG_NOT_IN_INPUT'
+		[rc.counter] = '0'
+		repeat
+			[rc.counter] + '1'
+			[steamval] = '0'
+			[xboxval] = '0'
+			[psnval] = '0'
+			[epicval] = '0'
+			if [rc.newcode.code:[rc.counter]] ! 'JSONARG_NOT_IN_INPUT'
+				if [rc.newcode.platform:[rc.counter]] = 'VAULT' & [rc.vaultcheck] = [true]
+					console 'write', 'Redeeming VAULT Code "'#[rc.newcode.code:[rc.counter]]#'"...'
+					call 'curl.exe -X POST https://2kgames.crowdtwist.com/code-redemption-campaign/redeem?cid=5261 -H "Content-Type: application/json;charset=UTF-8" -H "Origin: https://borderlands.com" -H "Referer: https://borderlands.com/en-US/vip/" -H "Cookie: '#[rc.cookie]#'" -d "{\"code\":\"'#[rc.newcode.code:[rc.counter]]#'\"}" -i -o redres.txt', 'hide'
+					httpresponse [redres] = 'redres.txt'
+					delfile 'redres.txt'
+					if [redres] ! '200 OK'
+						console 'continue', 'failed! Code is invalid.'
+					elseif [redres] = '200 OK'
+						console 'continue', 'SUCCESS! Your reward: '#[rc.newcode.reward:[rc.counter]]
+					endif
+				elseif [rc.newcode.platform:[rc.counter]] = 'EMAIL' & [rc.emailcheck] = [true]
+					console 'write', 'Redeeming EMAIL Code "'#[rc.newcode.code:[rc.counter]]#'"... '
+					call 'curl.exe -X POST https://2kgames.crowdtwist.com/code-redemption-campaign/redeem?cid=5264 -H "Content-Type: application/json;charset=UTF-8" -H "Origin: https://borderlands.com" -H "Referer: https://borderlands.com/en-US/vip/" -H "Cookie: '#[rc.cookie]#'" -d "{\"code\":\"'#[rc.newcode.code:[rc.counter]]#'\"}" -i -o redres.txt', 'hide'
+					httpresponse [redres] = 'redres.txt'
+					delfile 'redres.txt'
+					if [redres] ! '200 OK'
+						console 'continue', 'failed! Code is invalid.'
+					elseif [redres] = '200 OK'
+						console 'continue', 'SUCCESS! Your reward: '#[rc.newcode.reward:[rc.counter]]
+					endif
+				elseif [rc.newcode.platform:[rc.counter]] = 'CREATOR' & [rc.creatorcheck] = [true]
+					console 'write', 'Redeeming CREATOR Code "'#[rc.newcode.code:[rc.counter]]#'"... '
+					call 'curl.exe -X POST https://2kgames.crowdtwist.com/code-redemption-campaign/redeem?cid=5263 -H "Content-Type: application/json;charset=UTF-8" -H "Origin: https://borderlands.com" -H "Referer: https://borderlands.com/en-US/vip/" -H "Cookie: '#[rc.cookie]#'" -d "{\"code\":\"'#[rc.newcode.code:[rc.counter]]#'\"}" -i -o redres.txt', 'hide'
+					httpresponse [redres] = 'redres.txt'
+					delfile 'redres.txt'
+					if [redres] ! '200 OK'
+						console 'continue', 'failed! Code is invalid.'
+					elseif [redres] = '200 OK'
+						console 'continue', 'SUCCESS! Your reward: '#[rc.newcode.reward:[rc.counter]]
+					endif
+				elseif [rc.newcode.platform:[rc.counter]] = 'UNIVERSAL' & [rc.gkcheck] = [true]
+					[steamval] = '1'
+					[xboxval] = '1'
+					[psnval] = '1'
+					[epicval] = '1'
+				elseif [rc.newcode.platform:[rc.counter]] = 'PLAYSTATION' & [rc.gkcheck] = [true]
+					[psnval] = '1'
+				elseif [rc.newcode.platform:[rc.counter]] = 'XBOX' & [rc.gkcheck] = [true]
+					[xboxval] = '1'
+				elseif [rc.newcode.platform:[rc.counter]] = 'STEAM' & [rc.gkcheck] = [true]
+					[steamval] = '1'
+				elseif [rc.newcode.platform:[rc.counter]] = 'EPIC' & [rc.gkcheck] = [true]
+					[epicval] = '1'
+				endif	
+				if [steamval] = '1' & [steamcnt] >= '1'
+					console 'write', 'Redeeming SHIFT Code '#[rc.newcode.code:[rc.counter]]#' for Steam... '
+					rundialog [schmeissweg] = '1000'
+					redeemgk [status] = 'steam', [rc.newcode.code:[rc.counter]]
+					if [status] = 'SUCCESS'
+						console 'continue', 'success! You got '#[rc.newcode.reward:[rc.counter]]#''
+						cntvar [rc.gkcounter] = [rc.newcode.reward:[rc.counter]], 'Gold Key'
+						if [rc.gkcounter] >= '1'
+							gettok [rc.gktok] = [rc.newcode.reward:[rc.counter]], ' ', '1'
+							[rc.steamgk] = [rc.steamgk] + [rc.gktok]
+						else
+							if [rc.steamre] = ''
+								[rc.steamre] = [rc.newcode.reward:[rc.counter]]
+							else
+								[rc.steamre] = [rc.steamre]#', '#[rc.newcode.reward:[rc.counter]]
+							endif
+						endif
 					elseif [status] = 'FAILED_NOTABLE'
-					confirm [rc.notable.question] = 'It was not possible to redeem "'#[rc.newcode.code:[rc.counter]]#'". Would you like to mark it as redeemed, so the code will be skipped next time?'
-					if [rc.notable.question] = [true]
-						gkwrite [rc.newcode.code:[rc.counter]]
+						confirm [rc.notable.question] = 'It was not possible to redeem "'#[rc.newcode.code:[rc.counter]]#'". Would you like to mark it as redeemed, so the code will be skipped next time?'
+						if [rc.notable.question] = [true]
+							gkwrite [rc.newcode.code:[rc.counter]]
+						endif
+					elseif [status] = 'EMERGENCY_QUIT'
+						goto 'rc.end'
 					endif
-				elseif [status] = 'EMERGENCY_QUIT'
-					goto 'rc.end'
 				endif
-			endif	
+				if [xboxval]  = '1' & [xboxcnt] >= '1'
+					console 'write', 'Redeeming SHIFT Code '#[rc.newcode.code:[rc.counter]]#' for XBOX... '
+					rundialog [schmeissweg] = '1000'
+					redeemgk [status] = 'xboxlive', [rc.newcode.code:[rc.counter]]
+					if [status] = 'SUCCESS'
+						console 'continue', 'success! You got '#[rc.newcode.reward:[rc.counter]]#''
+						cntvar [rc.gkcounter] = [rc.newcode.reward:[rc.counter]], 'Gold Key'
+						if [rc.gkcounter] >= '1'
+							gettok [rc.gktok] = [rc.newcode.reward:[rc.counter]], ' ', '1'
+							[rc.xboxgk] = [rc.xboxgk] + [rc.gktok]
+						else
+							if [rc.xboxre] = ''
+								[rc.xboxre] = [rc.newcode.reward:[rc.counter]]
+							else
+								[rc.xboxre] = [rc.xboxre]#', '#[rc.newcode.reward:[rc.counter]]
+							endif
+						endif
+					elseif [status] = 'FAILED_NOTABLE'
+						confirm [rc.notable.question] = 'It was not possible to redeem "'#[rc.newcode.code:[rc.counter]]#'". Would you like to mark it as redeemed, so the code will be skipped next time?'
+						if [rc.notable.question] = [true]
+							gkwrite [rc.newcode.code:[rc.counter]]
+						endif
+					elseif [status] = 'EMERGENCY_QUIT'
+						goto 'rc.end'
+					endif
+				endif
+				if [psnval] = '1' & [playstationcnt] >= '1'
+					console 'write', 'Redeeming SHIFT Code '#[rc.newcode.code:[rc.counter]]#' for PlayStation... '
+					rundialog [schmeissweg] = '1000'
+					redeemgk [status] = 'psn', [rc.newcode.code:[rc.counter]]
+					if [status] = 'SUCCESS'
+						console 'continue', 'success! You got '#[rc.newcode.reward:[rc.counter]]#''
+						cntvar [rc.gkcounter] = [rc.newcode.reward:[rc.counter]], 'Gold Key'
+						if [rc.gkcounter] >= '1'
+							gettok [rc.gktok] = [rc.newcode.reward:[rc.counter]], ' ', '1'
+							[rc.psgk] = [rc.psgk] + [rc.gktok]
+						else
+							if [rc.psre] = ''
+								[rc.psre] = [rc.newcode.reward:[rc.counter]]
+							else
+								[rc.psre] = [rc.psre]#', '#[rc.newcode.reward:[rc.counter]]
+							endif
+						endif
+					elseif [status] = 'FAILED_NOTABLE'
+						confirm [rc.notable.question] = 'It was not possible to redeem "'#[rc.newcode.code:[rc.counter]]#'". Would you like to mark it as redeemed, so the code will be skipped next time?'
+							if [rc.notable.question] = [true]
+							gkwrite [rc.newcode.code:[rc.counter]]
+						endif
+					elseif [status] = 'EMERGENCY_QUIT'
+						goto 'rc.end'
+					endif
+				endif
+				if [epicval] = '1' & [epiccnt] >= '1'
+					console 'write', 'Redeeming SHIFT Code '#[rc.newcode.code:[rc.counter]]#' for Epic... '
+					rundialog [schmeissweg] = '1000'
+					redeemgk [status] = 'epic', [rc.newcode.code:[rc.counter]]
+					if [status] = 'SUCCESS'
+						console 'continue', 'success! You got '#[rc.newcode.reward:[rc.counter]]#''
+						cntvar [rc.gkcounter] = [rc.newcode.reward:[rc.counter]], 'Gold Key'
+						if [rc.gkcounter] >= '1'
+							gettok [rc.gktok] = [rc.newcode.reward:[rc.counter]], ' ', '1'
+							[rc.epicgk] = [rc.epicgk] + [rc.gktok]
+						else	
+							if [rc.epicre] = ''
+								[rc.epicre] = [rc.newcode.reward:[rc.counter]]
+							else
+								[rc.epicre] = [rc.epicre]#', '#[rc.newcode.reward:[rc.counter]]
+							endif
+						endif
+					elseif [status] = 'FAILED_NOTABLE'
+						confirm [rc.notable.question] = 'It was not possible to redeem "'#[rc.newcode.code:[rc.counter]]#'". Would you like to mark it as redeemed, so the code will be skipped next time?'
+						if [rc.notable.question] = [true]
+							gkwrite [rc.newcode.code:[rc.counter]]
+						endif
+					elseif [status] = 'EMERGENCY_QUIT'
+						goto 'rc.end'
+					endif
+				endif	
+			endif
+		until [rc.newcode.code:[rc.counter]] = 'JSONARG_NOT_IN_INPUT'
+	endif
+	
+	console 'write', '##### SUMMARY #####'
+	if [rc.steamgk] ! ''
+		console 'write', 'Steam rewards: '#[rc.steamgk]#' new golden keys!'
+		if [rc.steamre] ! ''
+			console 'continue', ', '#[rc.steamre]
 		endif
-	until [rc.newcode.code:[rc.counter]] = 'JSONARG_NOT_IN_INPUT'
+	endif
+	if [rc.steamre] ! '' & [rc.steamgk] = ''
+		console 'write', 'Steam rewards: '#[rc.steamre]
+	endif
+	
+	if [rc.xboxgk] ! ''
+		console 'write', 'Xbox rewards: '#[rc.xboxgk]#' new golden keys!'
+		if [rc.xboxre] ! ''
+			console 'continue', ', '#[rc.xboxre]
+		endif
+	endif
+	if [rc.xboxre] ! '' & [rc.xboxgk] = ''
+		console 'write', 'Xbox rewards: '#[rc.xboxre]
+	endif
+	
+	if [rc.psgk] ! ''
+		console 'write', 'PlayStation rewards: '#[rc.psgk]#' new golden keys!'
+		if [rc.psre] ! ''
+			console 'continue', ', '#[rc.psre]
+		endif
+	endif
+	if [rc.psre] ! '' & [rc.psgk] = ''
+		console 'write', 'PlayStation rewards: '#[rc.psre]
+	endif
+	
+	if [rc.epicgk] ! ''
+		console 'write', 'Epic rewards: '#[rc.epicgk]#' new golden keys!'
+		if [rc.epicre] ! ''
+			console 'continue', ', '#[rc.epicre]
+		endif
+	endif
+	if [rc.epicre] ! '' & [rc.epicgk] = ''
+		console 'write', 'Epic rewards: '#[rc.epicre]
+	endif
+	
+	if [rc.steamgk] = '' & [rc.steamre] = '' & [rc.xboxgk] = '' & [rc.xboxre] = '' & [rc.psgk] = '' & [rc.psre] = '' & [rc.epicgk] = '' & [rc.epicre] = ''
+		console 'write', 'No new rewards at this time!'
+	endif
+	[rc.steamgk] = ''
+	[rc.steamre] = ''
+	[rc.xboxgk] = ''
+	[rc.xboxre] = ''
+	[rc.psgk] = ''
+	[rc.psre] = ''
+	[rc.epicgk] = ''
+	[rc.epicre] = ''
+			
 	%rc.end
 	ret [rc.return]
+endfunc
+
+func getactivities: [ga.cookie]
+	call 'curl.exe -X GET https://2kgames.crowdtwist.com/widgets/conf/activity-list/9446?f=setupConf -H "Referer: https://borderlands.com/en-US/vip/" -H "Cookie: '#[ga.cookie]#'" -i -o vipactivities.txt', 'hide'
+	httpresponse [ga.response] = 'vipactivities.txt'
+	if [ga.response] ! '200 OK'
+		ret 'FAILED_UNEXPECTED_RESPONSE'
+	endif
+	[ga.cnt] = '0'
+	repeat
+		[ga.cnt] + '1'
+		readfile [ga.linedata] = 'vipactivities.txt', [ga.cnt]
+		cntvar [ga.varcnt] = [ga.linedata], 'setupConf'
+		if [ga.varcnt] = '1'
+			[ga.repout] = [true]
+		endif
+		if [ga.linedata] = 'EOF'
+			[ga.repout] = [true]
+		endif
+	until [ga.repout] = [true]
+	delfile 'vipactivities.txt'
+	if [ga.linedata] = 'EOF'
+		ret 'FAILED_INVALID_DATA'
+	endif
+	ret [ga.linedata]
+endfunc
+
+func refresh: [ref.oldpoints], [ref.cookie]
+	console 'write', 'Getting Points-Data...'
+	getpoints [ref.points] = [ref.cookie]
+	if [ref.points] = 'failed'
+		console 'continue', 'failed!'
+		ret 'failed'
+	endif
+	gettok [ref.redpoints] = [ref.points], '|', '1'
+	gettok [ref.totpoints] = [ref.points], '|', '2'
+	if [ref.oldpoints] = [ref.points]
+		console 'continue', 'SUCCESS!'
+		console 'write', 'No new VIP-Points!'
+	elseif [ref.oldpoints] ! '' & [ref.oldpoints] ! [ref.points]
+		console 'continue', 'SUCCESS!'
+		[ref.newpoints] = [ref.points] - [ref.oldpoints]
+		console 'write', 'You got '#[ref.newpoints]#' more VIP-Points!'
+	endif
+	[ref.ret] = [ref.redpoints]#'|'#[ref.totpoints]
+	ret [ref.ret]
 endfunc
 
 func redeemgk: [rgk.platform], [rgk.key]
@@ -1148,6 +1457,20 @@ if [curl] ! [true]
 	echo 'You need curl for windows to use this program. Please google for it and copy the program into this directory.'
 	halt
 endif
+
+if [command] ! ''
+	cntvar [parcnt] = [command], ';'
+	if [parcnt] >= '1'
+		gettok [par1] = [command], ';', '1'
+		if [par1] = 'silent' & [parcnt] = '2'
+			gettok [par2] = [command], ';', '2'
+			gettok [par3] = [command], ';', '3'
+			silent [par2], [par3]
+		endif
+	endif
+	goto 'exit'
+endif
+
 console 'enable', ''
 checkversion
 
@@ -1229,33 +1552,11 @@ repeat
 			echo 'Please enter a email!'
 			goto 'login_repeat'
 		endif
-		if [debugmode] = [true]
-			console 'write', '[DEBUG] E-MAIL: '#[email]#''#[new_line]
-			getlen [debug.cntvar] = [pwd]
-			[debug.counter] = '0'
-			repeat
-				[debug.counter] + '1'
-				[debug.password] = [debug.password]#'*'
-			until [debug.counter] = [debug.cntvar]
-			console 'write', '[DEBUG] PASSWORD: '#[debug.password]#''#[new_line]
+		login [login.return] = [email], [pwd]
+		if [login.return] = 'LOGIN_FAILED'
+			goto 'login_repeat'
 		endif
-		call 'curl.exe -X POST https://api.2k.com/borderlands/users/authenticate -H "Content-Type: application/json;charset=UTF-8" -H "Origin: https://borderlands.com" -H "Referer: https://borderlands.com/en-US/vip/" -d "{\"username\":\"'#[email]#'\",\"password\":\"'#[pwd]#'\"}" -i -o login.txt', 'hide'
-		httpresponse [code] = 'login.txt'
 		readfile [login.data] = 'login.txt', '0'
-		if [code] = '403 Forbidden'
-			echo 'Login failed. Wrong E-Mail/Password.'
-			goto 'login_repeat'
-		elseif [code] = 'R/W_Error'
-			echo 'Could not save login data. Do you need admin privilegs to write to files in this folder? Logged in anyway.'
-		elseif [code] = ''
-			echo 'Got no response from the server. Please check your internet connection!'
-			goto 'login_repeat'
-		elseif [code] ! '200 OK'
-			echo 'Unexpected response from the server. (HTTP Code: '#[code]#')'
-			goto 'login_repeat'
-		elseif [code] = '200 OK'
-			console 'continue', 'SUCCESS!'
-		endif
 		xsession [xsession] = 'login.txt'
 		delfile 'login.txt'
 		if [xsession] = 'failed'
@@ -1276,36 +1577,9 @@ repeat
 		rem *** insert event code here ***
 		getdialog [selected.username] = 'SHiFT Code-Manager [LOGIN]:savedlogin', 'SELECTION'
 		if [selected.username] ! ''
-			[cnt] = '0'
-			[found] = [false]
-			[exit] = [false]
-			fileexists [errorcode] = 'data.dat'
-			if [errorcode] ! [false]
-				repeat
-					[cnt] + '1'
-					readfile [saved.data] = 'data.dat', [cnt]
-					if [saved.data] ! 'EOF'
-						cntvar [count.appear] = [saved.data], [selected.username]
-					endif
-					if [count.appear] = '1'
-						[found] = [true]
-						[userline] = [saved.data]
-					endif
-					if [found] = [true]
-						gettok [filepw] = [userline], '=', '2'
-						decryptpw [decryptedpw] = [filepw]
-						letdialog 'SHiFT Code-Manager [LOGIN]:pwin', 'text', [decryptedpw]
-						letdialog 'SHiFT Code-Manager [LOGIN]:emailin', 'text', [selected.username]
-						[exit] = [true]
-					endif
-					if [saved.data] = 'EOF'
-						[exit] = [true]
-					endif
-				until [exit] = [true]
-				if [found] = [false]
-					echo 'Error in data file! Could not find saved password!'
-				endif
-			endif
+			getpassword [decryptedpw] = [selected.username]
+			letdialog 'SHiFT Code-Manager [LOGIN]:pwin', 'text', [decryptedpw]
+			letdialog 'SHiFT Code-Manager [LOGIN]:emailin', 'text', [selected.username]
 		endif
 		
 	rem --- event handling for click on "rems"
@@ -1328,17 +1602,19 @@ rundialog [event] = '500'
 console 'write', 'Getting Account data...'
 deldialog 'SHiFT Code-Manager [LOGIN]'
 rem --- creating code for widget "SHiFT Code-Manager"
-newdialog 'SHiFT Code-Manager', 'DIALOG', '647|298|522|195'
+newdialog 'SHiFT Code-Manager', 'DIALOG', '647|298|488|250'
 letdialog 'SHiFT Code-Manager', 'caption', 'SHiFT Code-Manager'
-letdialog 'SHiFT Code-Manager', 'STYLE', 'DIALOG'
+letdialog 'SHiFT Code-Manager', 'icon', 'img\icon.ico'
+letdialog 'SHiFT Code-Manager', 'menu', 'SHiFT Code-Manager:Autostart|Help|About|Visit:SCM on Reddit|SCM on GitHub|Orcicorn on Twitter;|Quit;SHiFT-Account:Refresh|Redeemed Codes;Logout;'
+letdialog 'SHiFT Code-Manager', 'style', 'DIALOG'
 
 rem --- creating code for widget "uinfo"
-newdialog 'SHiFT Code-Manager:uinfo', 'GROUP', '10|10|500|110'
+newdialog 'SHiFT Code-Manager:uinfo', 'GROUP', '10|10|275|105'
 letdialog 'SHiFT Code-Manager:uinfo', 'caption', 'User Info'
 
 rem --- creating code for widget "username"
-newdialog 'SHiFT Code-Manager:username', 'LABEL', '95|30|230|15'
-letdialog 'SHiFT Code-Manager:username', 'caption', 'Megakiller123456789000000000000000000000'
+newdialog 'SHiFT Code-Manager:username', 'LABEL', '95|30|185|15'
+letdialog 'SHiFT Code-Manager:username', 'caption', 'Megakiller1234567890'
 letdialog 'SHiFT Code-Manager:username', 'font', 'X|8|2'
 
 rem --- creating code for widget "usernamet"
@@ -1350,47 +1626,47 @@ newdialog 'SHiFT Code-Manager:useridt', 'LABEL', '52|50|40|15'
 letdialog 'SHiFT Code-Manager:useridt', 'caption', 'User-ID:'
 
 rem --- creating code for widget "userid"
-newdialog 'SHiFT Code-Manager:userid', 'LABEL', '95|50|230|15'
+newdialog 'SHiFT Code-Manager:userid', 'LABEL', '95|50|185|15'
 letdialog 'SHiFT Code-Manager:userid', 'caption', '01234567890'
 letdialog 'SHiFT Code-Manager:userid', 'font', 'X|8|2'
 
 rem --- creating code for widget "steamimg"
-newdialog 'SHiFT Code-Manager:steamimg', 'IMAGE', '325|25|40|40'
+newdialog 'SHiFT Code-Manager:steamimg', 'IMAGE', '295|25|40|40'
 letdialog 'SHiFT Code-Manager:steamimg', 'image', 'img\steambw.bmp'
 letdialog 'SHiFT Code-Manager:steamimg', 'event_click', [true]
 
 rem --- creating code for widget "psnimg"
-newdialog 'SHiFT Code-Manager:psnimg', 'IMAGE', '370|25|40|40'
+newdialog 'SHiFT Code-Manager:psnimg', 'IMAGE', '340|25|40|40'
 letdialog 'SHiFT Code-Manager:psnimg', 'image', 'img\psbw.bmp'
 letdialog 'SHiFT Code-Manager:psnimg', 'event_click', [true]
 
 rem --- creating code for widget "xboximg"
-newdialog 'SHiFT Code-Manager:xboximg', 'IMAGE', '415|25|40|40'
+newdialog 'SHiFT Code-Manager:xboximg', 'IMAGE', '385|25|40|40'
 letdialog 'SHiFT Code-Manager:xboximg', 'image', 'img\livebw.bmp'
 letdialog 'SHiFT Code-Manager:xboximg', 'event_click', [true]
 
 rem --- creating code for widget "epicimg"
-newdialog 'SHiFT Code-Manager:epicimg', 'IMAGE', '460|25|40|40'
+newdialog 'SHiFT Code-Manager:epicimg', 'IMAGE', '430|25|40|40'
 letdialog 'SHiFT Code-Manager:epicimg', 'image', 'img\epicbw.bmp'
 letdialog 'SHiFT Code-Manager:epicimg', 'event_click', [true]
 
 rem --- creating code for widget "2kimg"
-newdialog 'SHiFT Code-Manager:2kimg', 'IMAGE', '325|70|40|40'
+newdialog 'SHiFT Code-Manager:2kimg', 'IMAGE', '295|70|40|40'
 letdialog 'SHiFT Code-Manager:2kimg', 'image', 'img\2kbw.bmp'
 letdialog 'SHiFT Code-Manager:2kimg', 'event_click', [true]
 
 rem --- creating code for widget "twitchimg"
-newdialog 'SHiFT Code-Manager:twitchimg', 'IMAGE', '370|70|40|40'
+newdialog 'SHiFT Code-Manager:twitchimg', 'IMAGE', '340|70|40|40'
 letdialog 'SHiFT Code-Manager:twitchimg', 'image', 'img\twitchbw.bmp'
 letdialog 'SHiFT Code-Manager:twitchimg', 'event_click', [true]
 
 rem --- creating code for widget "twitterimg"
-newdialog 'SHiFT Code-Manager:twitterimg', 'IMAGE', '415|70|40|40'
+newdialog 'SHiFT Code-Manager:twitterimg', 'IMAGE', '385|70|40|40'
 letdialog 'SHiFT Code-Manager:twitterimg', 'image', 'img\twitterbw.bmp'
 letdialog 'SHiFT Code-Manager:twitterimg', 'event_click', [true]
 
 rem --- creating code for widget "fbimg"
-newdialog 'SHiFT Code-Manager:fbimg', 'IMAGE', '460|70|40|40'
+newdialog 'SHiFT Code-Manager:fbimg', 'IMAGE', '430|70|40|40'
 letdialog 'SHiFT Code-Manager:fbimg', 'image', 'img\facebookbw.bmp'
 letdialog 'SHiFT Code-Manager:fbimg', 'event_click', [true]
 
@@ -1413,48 +1689,48 @@ letdialog 'SHiFT Code-Manager:totalpoints', 'caption', '01234567890'
 letdialog 'SHiFT Code-Manager:totalpoints', 'font', 'X|8|2'
 
 rem --- creating code for widget "vc"
-newdialog 'SHiFT Code-Manager:vc', 'OPTION', '15|135|70|25'
+newdialog 'SHiFT Code-Manager:vc', 'OPTION', '20|135|70|25'
 letdialog 'SHiFT Code-Manager:vc', 'caption', 'Vault Code'
 letdialog 'SHiFT Code-Manager:vc', 'checked', [false]
 
 rem --- creating code for widget "redeemgroup"
-newdialog 'SHiFT Code-Manager:redeemgroup', 'GROUP', '10|120|395|45'
-letdialog 'SHiFT Code-Manager:redeemgroup', 'caption', 'Codes'
+newdialog 'SHiFT Code-Manager:redeemgroup', 'GROUP', '10|120|465|45'
+letdialog 'SHiFT Code-Manager:redeemgroup', 'caption', 'Activities'
 
 rem --- creating code for widget "email"
-newdialog 'SHiFT Code-Manager:email', 'OPTION', '90|135|80|25'
+newdialog 'SHiFT Code-Manager:email', 'OPTION', '105|135|80|25'
 letdialog 'SHiFT Code-Manager:email', 'caption', 'E-Mail Code'
 letdialog 'SHiFT Code-Manager:email', 'checked', [false]
 
 rem --- creating code for widget "creator"
-newdialog 'SHiFT Code-Manager:creator', 'OPTION', '170|135|85|25'
+newdialog 'SHiFT Code-Manager:creator', 'OPTION', '195|135|85|25'
 letdialog 'SHiFT Code-Manager:creator', 'caption', 'Creator Code'
 letdialog 'SHiFT Code-Manager:creator', 'checked', [false]
 
 rem --- creating code for widget "gk"
-newdialog 'SHiFT Code-Manager:gk', 'OPTION', '255|135|75|25'
+newdialog 'SHiFT Code-Manager:gk', 'OPTION', '290|135|75|25'
 letdialog 'SHiFT Code-Manager:gk', 'caption', 'SHiFT Code'
 letdialog 'SHiFT Code-Manager:gk', 'checked', [false]
 
 rem --- creating code for widget "redeem"
-newdialog 'SHiFT Code-Manager:redeem', 'BUTTON', '335|137|65|20'
-letdialog 'SHiFT Code-Manager:redeem', 'caption', 'Redeem'
+newdialog 'SHiFT Code-Manager:redeem', 'BUTTON', '10|165|100|30'
+letdialog 'SHiFT Code-Manager:redeem', 'caption', 'Do selected'
 letdialog 'SHiFT Code-Manager:redeem', 'font', 'X|8|2'
 
-rem --- creating code for widget "redeemed"
-newdialog 'SHiFT Code-Manager:redeemed', 'BUTTON', '185|70|115|20'
-letdialog 'SHiFT Code-Manager:redeemed', 'caption', 'Redeemed Codes'
-letdialog 'SHiFT Code-Manager:redeemed', 'font', 'X|8|2'
+rem --- creating code for widget "linked"
+newdialog 'SHiFT Code-Manager:linked', 'GROUP', '290|10|185|105'
+letdialog 'SHiFT Code-Manager:linked', 'caption', 'Linked Platforms'
 
-rem --- creating code for widget "refresh"
-newdialog 'SHiFT Code-Manager:refresh', 'BUTTON', '210|95|55|20'
-letdialog 'SHiFT Code-Manager:refresh', 'caption', 'Refresh'
-letdialog 'SHiFT Code-Manager:refresh', 'font', 'X|8|2'
+rem --- creating code for widget "vipact"
+newdialog 'SHiFT Code-Manager:vipact', 'OPTION', '385|135|85|25'
+letdialog 'SHiFT Code-Manager:vipact', 'caption', 'VIP-Activities'
+letdialog 'SHiFT Code-Manager:vipact', 'checked', [false]
 
-rem --- creating code for widget "help"
-newdialog 'SHiFT Code-Manager:help', 'BUTTON', '410|137|100|20'
-letdialog 'SHiFT Code-Manager:help', 'caption', 'Help/Info/About'
-letdialog 'SHiFT Code-Manager:help', 'font', 'X|8|2'
+rem --- creating code for widget "redev"
+newdialog 'SHiFT Code-Manager:redev', 'BUTTON', '115|165|125|30'
+letdialog 'SHiFT Code-Manager:redev', 'caption', 'Hell, do everything!'
+letdialog 'SHiFT Code-Manager:redev', 'font', 'X|8|2'
+
 centerdialog 'SHiFT Code-Manager'
 
 json [platforms] = [login.data], 'platforms', '1'
@@ -1513,7 +1789,6 @@ elseif [cookie] = 'failed_no_redirect'
 	goto 'exit'
 endif
 console 'continue', 'SUCCESS!'
-%refresh
 console 'write', 'Getting Points-Data...'
 [oldpoints] = [points]
 getpoints [points] = [cookie]
@@ -1528,19 +1803,11 @@ if [points] = 'failed'
 endif
 gettok [redpoints] = [points], '|', '1'
 gettok [totpoints] = [points], '|', '2'
-if [oldpoints] = [points]
-	console 'continue', 'SUCCESS!'
-	console 'write', 'No new points :('
-elseif [oldpoints] ! '' & [oldpoints] ! [points]
-	console 'continue', 'SUCCESS!'
-	[newpoints] = [points] - [oldpoints]
-	console 'write', 'You got '#[newpoints]#' more points!'
-else
-	console 'continue', 'SUCCESS!'
-endif
+console 'continue', 'SUCCESS!'
 letdialog 'SHiFT Code-Manager:curpoints', 'caption', [redpoints]
 letdialog 'SHiFT Code-Manager:totalpoints', 'caption', [totpoints]
 letdialog 'SHiFT Code-Manager', 'visible', [true]
+
 %mainrundialog
 repeat
 	rundialog [event] = '0'
@@ -1552,23 +1819,45 @@ repeat
 		getdialog [emailcheck] = 'SHiFT Code-Manager:email', 'checked'
 		getdialog [creatorcheck] = 'SHiFT Code-Manager:creator', 'checked'
 		getdialog [gkcheck] = 'SHiFT Code-Manager:gk', 'checked'
-		[checkcheck] = [vccheck] + [emailcheck] + [creatorcheck] + [gkcheck]
-		if [checkcheck] >= '-3'
-			redeemcodes [result] = [vccheck], [emailcheck], [creatorcheck], [gkcheck]
-			goto 'refresh'
+		getdialog [vipcheck] = 'SHiFT Code-Manager:vipact', 'checked'
+		[checkcheck] = [vccheck] + [emailcheck] + [creatorcheck] + [gkcheck] + [vipcheck]
+		if [checkcheck] >= '-4'
+			redeemcodes [result] = [vccheck], [emailcheck], [creatorcheck], [gkcheck], [vipcheck], [cookie]
+			refresh [points] = [points], [cookie]
+			gettok [redpoints] = [points], '|', '1'
+			gettok [totpoints] = [points], '|', '2'
+			letdialog 'SHiFT Code-Manager:curpoints', 'caption', [redpoints]
+			letdialog 'SHiFT Code-Manager:totalpoints', 'caption', [totpoints]
 		else
 			echo 'Redeeming nothing is impossible... You need to check at least one box!'
 			goto 'mainrundialog'
 		endif
+		
+	rem --- event handling for click on "redev"
+	elseif [event] = 'click_SHiFT Code-Manager:redev'
+		rem *** insert event code here ***
+		console 'write', 'Okay! You want it!'
+		redeemcodes [result] = [true], [true], [true], [true], [true], [cookie]
+		refresh [points] = [points], [cookie]
+		gettok [redpoints] = [points], '|', '1'
+		gettok [totpoints] = [points], '|', '2'
+		letdialog 'SHiFT Code-Manager:curpoints', 'caption', [redpoints]
+		letdialog 'SHiFT Code-Manager:totalpoints', 'caption', [totpoints]
+		
 	rem --- event handling for click on "redeemed"
-	elseif [event] = 'click_SHiFT Code-Manager:redeemed'
+	elseif [event] = 'click_SHiFT Code-Manager:Menu_Redeemed Codes'
 		rem *** insert event code here ***
 		goto 'codewindow'
 		
 	rem --- event handling for click on "refresh"
-	elseif [event] = 'click_SHiFT Code-Manager:refresh'
+	elseif [event] = 'click_SHiFT Code-Manager:Menu_Refresh'
 		rem *** insert event code here ***
-		goto 'refresh'
+		refresh [points] = [points], [cookie]
+		gettok [redpoints] = [points], '|', '1'
+		gettok [totpoints] = [points], '|', '2'
+		letdialog 'SHiFT Code-Manager:curpoints', 'caption', [redpoints]
+		letdialog 'SHiFT Code-Manager:totalpoints', 'caption', [totpoints]
+		
 	elseif [event] = 'click_SHiFT Code-Manager:help'
 		fileexists [readme_ec] = 'readme.txt'
 		if [readme_ec] = [true]
@@ -1576,23 +1865,123 @@ repeat
 		else
 			echo 'Oh! Did you delete the readme.txt? There you can find more informations. Take a look into the downloaded zip :)'
 		endif
+		
+	rem --- event handling for menu item "Logout"
+	elseif [event] = 'click_SHiFT Code-Manager:Menu_Logout'
+		rem *** insert event code here ***
+		logout [logoff_status] = [xsession], [false]
+		
+	rem --- event handling for menu item "Quit"
+	elseif [event] = 'click_SHiFT Code-Manager:Menu_Quit'
+		rem *** insert event code here ***
+		logout [logoff_status] = [xsession], [true]
+		
+	rem --- event handling for menu item "SCM on Reddit"
+	elseif [event] = 'click_SHiFT Code-Manager:Menu_SCM on Reddit'
+		rem *** insert event code here ***
+		open 'https://www.reddit.com/r/borderlands3/comments/duldqz/shift_codemanager_an_automatic_redemption_program/'
+		
+	rem --- event handling for menu item "SCM on GitHub"
+	elseif [event] = 'click_SHiFT Code-Manager:Menu_SCM on GitHub'
+		rem *** insert event code here ***
+		open 'https://github.com/SurrendeR1993/SHiFT-Code-Manager'
+		
+	rem --- event handling for menu item "Orcicorn on Twitter"
+	elseif [event] = 'click_SHiFT Code-Manager:Menu_Orcicorn on Twitter'
+		rem *** insert event code here ***
+		open 'https://twitter.com/orcicorn'
+	rem --- event handling for menu item "Configure"
+	elseif [event] = 'click_SHiFT Code-Manager:Menu_Autostart'
+		rem *** insert event code here ***
+		goto 'autostart'
 	endif
 
 until [event] = 'close_SHiFT Code-Manager'
-%logout
-console 'write', 'Logging out...'
-logout [logoff_status] = [xsession]
-wait '200'
-if [logoff_status] ! 'success'
-	console 'continue', 'failed'
-	confirm [logout_retry] = 'Logout was not successfully. It is safer to logout correctly, but you can also just continue. Do you want to retry?'
-	if [logout_retry] = [true]
-		goto 'logout'
+logout [logoff_status] = [xsession], [true]
+
+%autostart
+letdialog 'SHiFT Code-Manager', 'visible', [false]
+rem --- creating code for widget "myDialog"
+newdialog 'SHiFT Code-Manager_autostart', 'DIALOG', '667|454|405|140'
+letdialog 'SHiFT Code-Manager_autostart', 'caption', 'SHiFT Code-Manager'
+letdialog 'SHiFT Code-Manager_autostart', 'icon', 'img\icon.ico'
+letdialog 'SHiFT Code-Manager_autostart', 'style', 'DIALOG'
+
+rem --- creating code for widget "infot"
+newdialog 'SHiFT Code-Manager_autostart:infot', 'LABEL', '5|5|390|55'
+letdialog 'SHiFT Code-Manager_autostart:infot', 'caption', 'This will create a shortcut in your autostart directory. SHiFT Code-Manager will then start on Windows startup and do its job with the actual logged in account and the selected code types in silent mode. You will not get any information except errors.'
+
+rem --- creating code for widget "create"
+newdialog 'SHiFT Code-Manager_autostart:create', 'BUTTON', '275|60|115|25'
+letdialog 'SHiFT Code-Manager_autostart:create', 'caption', 'Create shortcut'
+
+rem --- creating code for widget "open"
+newdialog 'SHiFT Code-Manager_autostart:open', 'BUTTON', '275|85|115|25'
+letdialog 'SHiFT Code-Manager_autostart:open', 'caption', 'Open autostart folder'
+
+rem --- creating code for widget "vault"
+newdialog 'SHiFT Code-Manager_autostart:vault', 'OPTION', '5|60|80|20'
+letdialog 'SHiFT Code-Manager_autostart:vault', 'caption', 'Vault Codes'
+letdialog 'SHiFT Code-Manager_autostart:vault', 'checked', [false]
+
+rem --- creating code for widget "email"
+newdialog 'SHiFT Code-Manager_autostart:email', 'OPTION', '5|85|80|20'
+letdialog 'SHiFT Code-Manager_autostart:email', 'caption', 'E-Mail Codes'
+letdialog 'SHiFT Code-Manager_autostart:email', 'checked', [false]
+
+rem --- creating code for widget "creator"
+newdialog 'SHiFT Code-Manager_autostart:creator', 'OPTION', '95|60|85|20'
+letdialog 'SHiFT Code-Manager_autostart:creator', 'caption', 'Creator Codes'
+letdialog 'SHiFT Code-Manager_autostart:creator', 'checked', [false]
+
+rem --- creating code for widget "shift"
+newdialog 'SHiFT Code-Manager_autostart:shift', 'OPTION', '95|85|85|20'
+letdialog 'SHiFT Code-Manager_autostart:shift', 'caption', 'SHiFT Codes'
+letdialog 'SHiFT Code-Manager_autostart:shift', 'checked', [false]
+
+rem --- creating code for widget "activities"
+newdialog 'SHiFT Code-Manager_autostart:activities', 'OPTION', '190|60|65|20'
+letdialog 'SHiFT Code-Manager_autostart:activities', 'caption', 'Activities'
+letdialog 'SHiFT Code-Manager_autostart:activities', 'checked', [false]
+
+rem --- make the dialog window visible
+centerdialog 'SHiFT Code-Manager_autostart'
+letdialog 'SHiFT Code-Manager_autostart', 'visible', [true]
+
+repeat
+	rundialog [event] = '0'
+
+	rem --- event handling for click on "create"
+	if [event] = 'click_SHiFT Code-Manager_autostart:create'
+		rem *** insert event code here ***
+		getdialog [as.vault] = 'SHiFT Code-Manager_autostart:vault', 'checked'
+		getdialog [as.email] = 'SHiFT Code-Manager_autostart:email', 'checked'
+		getdialog [as.creator] = 'SHiFT Code-Manager_autostart:creator', 'checked'
+		getdialog [as.shift] = 'SHiFT Code-Manager_autostart:shift', 'checked'
+		getdialog [as.activ] = 'SHiFT Code-Manager_autostart:activities', 'checked'
+		[as.checkcheck] = [as.vault] + [as.email] + [as.creator] + [as.shift] + [as.activ]
+		if [as.checkcheck] ! '-5'
+			[as.cnt] = '0'
+			repeat
+				[as.cnt] + '1'
+				fileexists [as.exists] = 'C:\Users\'#[curuser]#'\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\SHiFT Code-Manager'#[as.cnt]#'.lnk'
+			until [as.exists] = [false]
+			shortcut 'C:\Users\'#[curuser]#'\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup\SHiFT Code-Manager'#[as.cnt]#'', [ownname], 'silent;'#[email]#';'#[as.vault]#'|'#[as.email]#'|'#[as.creator]#'|'#[as.shift]#'|'#[as.activ]#'', [current], [current]#'\img\icon.ico', 'show'
+			echo 'Shortcut created!'
+		else
+			echo 'Please check at least one box!'
+		endif
+	rem --- event handling for click on "open"
+	elseif [event] = 'click_SHiFT Code-Manager_autostart:open'
+		rem *** insert event code here ***
+		echo 'open C:\'#[curuser]#'\SurrendeR1993\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup'
+		open 'C:\Users\'#[curuser]#'\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup'
 	endif
-else
-	console 'continue', 'SUCCESS!'
-endif
-goto 'exit'
+
+until [event] = 'close_SHiFT Code-Manager_autostart'
+deldialog 'SHiFT Code-Manager_autostart'
+letdialog 'SHiFT Code-Manager', 'visible', [true]
+goto 'mainrundialog'
 
 %codewindow
 letdialog 'SHiFT Code-Manager', 'visible', [false]
