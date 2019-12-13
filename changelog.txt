@@ -1,10 +1,18 @@
 ##################
 ##	Changelog	##
 ##################
-11/11/2019
+13.12.2019
++silent mode
++doing activities
++autostart
++main window appearance
++-many many code changes, I don't know what exactly was changed
+=small fixes
+
+11.11.2019
 +information about the needing of the signup for the Vault Insider Program if it is not done yet
 =fixed wrong handling of non readable/existing files
 
-08/11/2019
+08.11.2019
 +versioncheck
 =fixed overlapping "SHiFT-Code"-Text
