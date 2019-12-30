@@ -1,6 +1,12 @@
 ##################
 ##	Changelog	##
 ##################
+30.12.2019
+=fixed silent mode not doing SHiFT-Code redemption
++added missing menu entries
+=fixed incorrect counting of processed activities
+-removed a missed debug-echo 
+
 13.12.2019
 +silent mode
 +doing activities

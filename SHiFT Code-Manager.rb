@@ -1,11 +1,20 @@
+rem ########################NOTES############################
+rem 
+rem :TODO:
+rem
+rem -Activity-Filter optimieren (verdammt lahm!)
+rem -Multi-Use-Fix: Aktuell kann nur ein Benutzer gleichzeitig das Programm ausführen wegen dem Zwischenspeicher. Lösung: Dateien mit ID. voran schreiben und lesen
+rem 
+rem #########################################################
 rem Written in Rapidbatch: http://rb5.phorward-software.com/
+rem #########################################################
 include 'dialog.rb'
 dec [2kcnt], [gk.code.old], [rgk.errorcode], [rc.counter3], [rc.ppos], [CODES], [Confirm_Title], [Echo_Title], [carriagereturn], [case_sensitivity], [cnt], [code], [console], [cookie], [count.appear], [creatorcheck], [cw.command], [cw.data], [cw.old], [cw.output], [data.email], [data.line], [data.out2], [data.out], [decrypt.counter], [decrypt.decryptedchar], [decrypt.input], [decrypt.key], [decrypt.maxchar], [decrypt.return], [decrypt.tok], [dispname], [editdata.cnt], [editdata.delete], [editdata.email], [editdata.encryptedpw], [editdata.password], [editdata.return], [editdata.todo], [email.cnt], [email], [emailcheck], [emaillist], [encrypt.char], [encrypt.chr], [encrypt.counter], [encrypt.encryptedchar], [encrypt.input], [encrypt.inputlen], [encrypt.random], [encrypt.return], [encrypt.salt], [epiccnt], [exit], [facebookcnt], [filepw], [found], [getcookie.charat], [getcookie.cookie.len], [getcookie.cookie.pos], [getcookie.cookie], [getcookie.counter2], [getcookie.counter], [getcookie.header], [getcookie.input], [getcookie.redirect], [getcookie.response], [getcookie.return], [getcookie.x-ct-redirect.counter], [getcookie.x-ct-redirect.len], [getcookie.x-ct-redirect.pos], [getpoints.data], [getpoints.input], [getpoints.redpoints], [getpoints.return], [getpoints.totalpoints], [1.cookie], [getredeemed.counter], [getredeemed.creator], [getredeemed.creatorcnt], [getredeemed.creatorlist], [getredeemed.email], [getredeemed.emailcnt], [getredeemed.emaillist], [getredeemed.notes:'250'], [getredeemed.response], [getredeemed.return], [getredeemed.stop], [getredeemed.title:'250'], [getredeemed.vault], [getredeemed.vaultcnt], [getredeemed.vaultlist], [gkcheck], [http.response.file], [http.response.out], [http.response.return], [json.arg.len], [json.arg], [json.charat], [json.clamp.close], [json.clamp.counter], [json.clamp.open], [json.clampmode], [json.cnt], [json.halt], [json.input.pos], [json.input], [json.pos.counter], [json.return], [linefeed], [login.data], [platforms], [playstationcnt], [points], [pwd], [rc.cntvar], [rc.counter2], [rc.counter], [rc.creatorcheck], [rc.emailcheck], [rc.found], [rc.gk.len], [rc.gk.raw.entry], [rc.gk.raw.exit], [rc.gk.raw.list], [rc.gk.raw], [rc.gkcheck], [rc.newcode.code:'250'], [rc.newcode.type:'250'], [rc.newcode.value:'250'], [rc.newcode], [rc.newcodes.raw], [rc.quit], [rc.redcodes.creator:'250'], [rc.redcodes.creator], [rc.redcodes.email:'250'], [rc.redcodes.email], [rc.redcodes.raw], [rc.redcodes.vault:'250'], [rc.redcodes.vault], [rc.repeat.quit], [rc.response], [rc.return], [rc.tok], [rc.vaultcheck], [redcc], [redcodes.data], [redcodescomplete], [redec], [redpoints], [redres], [redvc], [result], [retry], [rgk.jobid], [rgk.key], [rgk.platform], [rgk.return], [rgk.tmp], [save.login], [saved.data], [schmeissweg], [selected.username], [shiftid], [status], [steamcnt], [totpoints], [twitchcnt], [twittercnt], [userline], [xboxcnt], [xs.cntcom], [xs.cntvar], [xs.counter], [xs.data], [xs.input], [xs.session], [xsession]
 [case_sensitivity] = [false]
 [eol] = ''
 [Echo_Title] = 'SHiFT Code-Manager'
 [Confirm_Title] = 'SHiFT Code-Manager'
-[actual.version] = '1.5'
+[actual.version] = '1.6'
 
 delfile 'console.txt'
 
@@ -19,6 +28,7 @@ proc silent: [s.user], [s.options]
 		if [s.pw] ! 'USER_NOT_FOUND'
 			login [s.return] = [s.user], [s.pw]
 			readfile [s.logindata] = 'login.txt', '0'
+			getplatforms [s.platforms] = [s.logindata]
 			getcookie [s.cookie] = [s.logindata]
 			if [s.return] = 'LOGIN_SUCCEEDED'
 				xsession [s.xsession] = 'login.txt'
@@ -31,7 +41,7 @@ proc silent: [s.user], [s.options]
 					gettok [s.gk] = [s.options], '|', '4'
 					gettok [s.vip] = [s.options], '|', '5'
 					getpoints [s.points] = [s.cookie]
-					redeemcodes [result] = [s.vault], [s.email], [s.creator], [s.gk], [s.vip], [s.cookie]
+					redeemcodes [result] = [s.vault], [s.email], [s.creator], [s.gk], [s.vip], [s.cookie], [s.platforms], [s.xsession]
 					refresh [s.points] = [s.points], [s.cookie]
 					logout [s.logout.status] = [s.xsession], [true]
 				endif
@@ -42,6 +52,19 @@ proc silent: [s.user], [s.options]
 		goto 'onlinecheck'
 	endif
 endproc
+
+func getplatforms: [gp.logindata]
+	json [gp.platforms] = [gp.logindata], 'platforms', '1'
+	cntvar [gp.steamcnt] = [gp.platforms], 'steam'
+	cntvar [gp.playstationcnt] = [gp.platforms], 'psn'
+	cntvar [gp.xboxcnt] = [gp.platforms], 'xbox'
+	cntvar [gp.epiccnt] = [gp.platforms], 'epic'
+	cntvar [gp.2kcnt] = [gp.platforms], '2k'
+	cntvar [gp.twitchcnt] = [gp.platforms], 'twitch'
+	cntvar [gp.twittercnt] = [gp.platforms], 'twitter'
+	cntvar [gp.facebookcnt] = [gp.platforms], 'facebook'
+	ret [gp.steamcnt]#'|'#[gp.playstationcnt]#'|'#[gp.xboxcnt]#'|'#[gp.epiccnt]#'|'#[gp.2kcnt]#'|'#[gp.twitchcnt]#'|'#[gp.twittercnt]#'|'#[gp.facebookcnt]
+endfunc
 
 func getpassword: [gp.username]
 	[gp.cnt] = '0'
@@ -507,7 +530,11 @@ func getredeemed: [gr.cookie]
 	ret [gr.return]
 endfunc
 
-func redeemcodes: [rc.vaultcheck], [rc.emailcheck], [rc.creatorcheck], [rc.gkcheck], [rc.vipcheck], [rc.cookie]
+func redeemcodes: [rc.vaultcheck], [rc.emailcheck], [rc.creatorcheck], [rc.gkcheck], [rc.vipcheck], [rc.cookie], [rc.platforms], [rc.xsession]
+	gettok [rc.platform.steam] = [rc.platforms], '|', '1'
+	gettok [rc.platform.playstation] = [rc.platforms], '|', '2'
+	gettok [rc.platform.xbox] = [rc.platforms], '|', '3'
+	gettok [rc.platform.epic] = [rc.platforms], '|', '4'
 	if [rc.vipcheck] = [true]
 		console 'write', 'Getting activity data...'
 		getactivities [rc.activities] = [rc.cookie]
@@ -516,9 +543,9 @@ func redeemcodes: [rc.vaultcheck], [rc.emailcheck], [rc.creatorcheck], [rc.gkche
 		console 'write', 'Filter activity names (1 of '#[rc.actnamecnt]#')...'
 		repeat
 			[rc.cnt] + '1'
-			console 'rewrite', 'Filter activity names ('#[rc.cnt]#' of '#[rc.actnamecnt]#' Activities)...'
 			json [rc.actname] = [rc.activities], '"name"', [rc.cnt]
 			if [rc.actname] ! 'JSONARG_NOT_IN_INPUT'
+				console 'rewrite', 'Filter activity names ('#[rc.cnt]#' of '#[rc.actnamecnt]#' Activities)...'
 				replacevar [rc.actname] = [rc.actname], '"', '\"'
 				if [rc.cnt] = '1'
 					[rc.actnames] = ''#[rc.actname]#''
@@ -541,8 +568,10 @@ func redeemcodes: [rc.vaultcheck], [rc.emailcheck], [rc.creatorcheck], [rc.gkche
 			[rc.counter2] = '0'
 			repeat
 				[rc.counter] + '1'
-				console 'rewrite', 'Processing activity '#[rc.counter]#' of '#[rc.actnamecnt2]#'...'
 				json [rc.activity.cap] = [rc.activitydata], '"has_reached_freq_cap"', [rc.counter]
+				if [rc.activity.cap] ! 'JSONARG_NOT_IN_INPUT'
+					console 'rewrite', 'Processing activity '#[rc.counter]#' of '#[rc.actnamecnt2]#'...'
+				endif
 				if [rc.activity.cap] = 'f'
 					[rc.counter2] + '1'
 					json [rc.activity.link:[rc.counter2]] = [rc.activitydata], '"link_href"', [rc.counter]
@@ -891,11 +920,11 @@ func redeemcodes: [rc.vaultcheck], [rc.emailcheck], [rc.creatorcheck], [rc.gkche
 					[steamval] = '1'
 				elseif [rc.newcode.platform:[rc.counter]] = 'EPIC' & [rc.gkcheck] = [true]
 					[epicval] = '1'
-				endif	
-				if [steamval] = '1' & [steamcnt] >= '1'
+				endif
+				if [steamval] = '1' & [rc.platform.steam] >= '1'
 					console 'write', 'Redeeming SHIFT Code '#[rc.newcode.code:[rc.counter]]#' for Steam... '
 					rundialog [schmeissweg] = '1000'
-					redeemgk [status] = 'steam', [rc.newcode.code:[rc.counter]]
+					redeemgk [status] = 'steam', [rc.newcode.code:[rc.counter]], [rc.xsession]
 					if [status] = 'SUCCESS'
 						console 'continue', 'success! You got '#[rc.newcode.reward:[rc.counter]]#''
 						cntvar [rc.gkcounter] = [rc.newcode.reward:[rc.counter]], 'Gold Key'
@@ -918,10 +947,10 @@ func redeemcodes: [rc.vaultcheck], [rc.emailcheck], [rc.creatorcheck], [rc.gkche
 						goto 'rc.end'
 					endif
 				endif
-				if [xboxval]  = '1' & [xboxcnt] >= '1'
+				if [xboxval]  = '1' & [rc.platform.xbox] >= '1'
 					console 'write', 'Redeeming SHIFT Code '#[rc.newcode.code:[rc.counter]]#' for XBOX... '
 					rundialog [schmeissweg] = '1000'
-					redeemgk [status] = 'xboxlive', [rc.newcode.code:[rc.counter]]
+					redeemgk [status] = 'xboxlive', [rc.newcode.code:[rc.counter]], [rc.xsession]
 					if [status] = 'SUCCESS'
 						console 'continue', 'success! You got '#[rc.newcode.reward:[rc.counter]]#''
 						cntvar [rc.gkcounter] = [rc.newcode.reward:[rc.counter]], 'Gold Key'
@@ -944,10 +973,10 @@ func redeemcodes: [rc.vaultcheck], [rc.emailcheck], [rc.creatorcheck], [rc.gkche
 						goto 'rc.end'
 					endif
 				endif
-				if [psnval] = '1' & [playstationcnt] >= '1'
+				if [psnval] = '1' & [rc.platform.playstation] >= '1'
 					console 'write', 'Redeeming SHIFT Code '#[rc.newcode.code:[rc.counter]]#' for PlayStation... '
 					rundialog [schmeissweg] = '1000'
-					redeemgk [status] = 'psn', [rc.newcode.code:[rc.counter]]
+					redeemgk [status] = 'psn', [rc.newcode.code:[rc.counter]], [rc.xsession]
 					if [status] = 'SUCCESS'
 						console 'continue', 'success! You got '#[rc.newcode.reward:[rc.counter]]#''
 						cntvar [rc.gkcounter] = [rc.newcode.reward:[rc.counter]], 'Gold Key'
@@ -970,10 +999,10 @@ func redeemcodes: [rc.vaultcheck], [rc.emailcheck], [rc.creatorcheck], [rc.gkche
 						goto 'rc.end'
 					endif
 				endif
-				if [epicval] = '1' & [epiccnt] >= '1'
+				if [epicval] = '1' & [rc.platform.epic] >= '1'
 					console 'write', 'Redeeming SHIFT Code '#[rc.newcode.code:[rc.counter]]#' for Epic... '
 					rundialog [schmeissweg] = '1000'
-					redeemgk [status] = 'epic', [rc.newcode.code:[rc.counter]]
+					redeemgk [status] = 'epic', [rc.newcode.code:[rc.counter]], [rc.xsession]
 					if [status] = 'SUCCESS'
 						console 'continue', 'success! You got '#[rc.newcode.reward:[rc.counter]]#''
 						cntvar [rc.gkcounter] = [rc.newcode.reward:[rc.counter]], 'Gold Key'
@@ -1103,8 +1132,8 @@ func refresh: [ref.oldpoints], [ref.cookie]
 	ret [ref.ret]
 endfunc
 
-func redeemgk: [rgk.platform], [rgk.key]
-	call 'curl.exe -X POST https://api.2k.com/borderlands/code/'#[rgk.key]#'/redeem/'#[rgk.platform]#' -H "Origin: https://borderlands.com" -H "X-SESSION: '#[xsession]#'" -H "Referer: https://borderlands.com/en-US/vip/" -i -o redres.txt', 'hide'
+func redeemgk: [rgk.platform], [rgk.key], [rgk.xsession]
+	call 'curl.exe -X POST https://api.2k.com/borderlands/code/'#[rgk.key]#'/redeem/'#[rgk.platform]#' -H "Origin: https://borderlands.com" -H "X-SESSION: '#[rgk.xsession]#'" -H "Referer: https://borderlands.com/en-US/vip/" -i -o redres.txt', 'hide'
 	httpresponse [redres] = 'redres.txt'
 	[rgk.return] = ''
 	[rgk.warning.ignore] = [false]
@@ -1120,7 +1149,7 @@ func redeemgk: [rgk.platform], [rgk.key]
 		delfile 'redres.txt'
 		jsoncontent [rgk.tmp] = [rgk.tmp]
 		json [rgk.jobid] = [rgk.tmp], '"job_id"', '1'
-		call 'curl.exe -X GET https://api.2k.com/borderlands/code/'#[rgk.key]#'/job/'#[rgk.jobid]#' -H "Origin: https://borderlands.com" -H "X-SESSION: '#[xsession]#'" -H "Referer: https://borderlands.com/en-US/vip/" -i -o redres.txt', 'hide'
+		call 'curl.exe -X GET https://api.2k.com/borderlands/code/'#[rgk.key]#'/job/'#[rgk.jobid]#' -H "Origin: https://borderlands.com" -H "X-SESSION: '#[rgk.xsession]#'" -H "Referer: https://borderlands.com/en-US/vip/" -i -o redres.txt', 'hide'
 		httpresponse [redres] = 'redres.txt'
 		if [redres] ! '200 OK'
 			readfile [rgk.tmp] = 'redres.txt', '0'
@@ -1733,15 +1762,16 @@ letdialog 'SHiFT Code-Manager:redev', 'font', 'X|8|2'
 
 centerdialog 'SHiFT Code-Manager'
 
-json [platforms] = [login.data], 'platforms', '1'
-cntvar [steamcnt] = [platforms], 'steam'
-cntvar [playstationcnt] = [platforms], 'psn'
-cntvar [xboxcnt] = [platforms], 'xbox'
-cntvar [epiccnt] = [platforms], 'epic'
-cntvar [2kcnt] = [platforms], '2k'
-cntvar [twitchcnt] = [platforms], 'twitch'
-cntvar [twittercnt] = [platforms], 'twitter'
-cntvar [facebookcnt] = [platforms], 'facebook'
+getplatforms [platforms] = [login.data]
+gettok [steamcnt] = [platforms], '|', '1'
+gettok [playstationcnt] = [platforms], '|', '2'
+gettok [xboxcnt] = [platforms], '|', '3'
+gettok [epiccnt] = [platforms], '|', '4'
+gettok [2kcnt] = [platforms], '|', '5'
+gettok [twitchcnt] = [platforms], '|', '6'
+gettok [twittercnt] = [platforms], '|', '7'
+gettok [facebookcnt] = [platforms], '|', '8'
+
 if [steamcnt] = '1'
 	letdialog 'SHiFT Code-Manager:steamimg', 'image', 'img\steamc.bmp'
 endif
@@ -1822,7 +1852,7 @@ repeat
 		getdialog [vipcheck] = 'SHiFT Code-Manager:vipact', 'checked'
 		[checkcheck] = [vccheck] + [emailcheck] + [creatorcheck] + [gkcheck] + [vipcheck]
 		if [checkcheck] >= '-4'
-			redeemcodes [result] = [vccheck], [emailcheck], [creatorcheck], [gkcheck], [vipcheck], [cookie]
+			redeemcodes [result] = [vccheck], [emailcheck], [creatorcheck], [gkcheck], [vipcheck], [cookie], [platforms], [xsession]
 			refresh [points] = [points], [cookie]
 			gettok [redpoints] = [points], '|', '1'
 			gettok [totpoints] = [points], '|', '2'
@@ -1837,7 +1867,7 @@ repeat
 	elseif [event] = 'click_SHiFT Code-Manager:redev'
 		rem *** insert event code here ***
 		console 'write', 'Okay! You want it!'
-		redeemcodes [result] = [true], [true], [true], [true], [true], [cookie]
+		redeemcodes [result] = [true], [true], [true], [true], [true], [cookie], [platforms], [xsession]
 		refresh [points] = [points], [cookie]
 		gettok [redpoints] = [points], '|', '1'
 		gettok [totpoints] = [points], '|', '2'
@@ -1858,13 +1888,11 @@ repeat
 		letdialog 'SHiFT Code-Manager:curpoints', 'caption', [redpoints]
 		letdialog 'SHiFT Code-Manager:totalpoints', 'caption', [totpoints]
 		
-	elseif [event] = 'click_SHiFT Code-Manager:help'
-		fileexists [readme_ec] = 'readme.txt'
-		if [readme_ec] = [true]
-			open 'readme.txt'
-		else
-			echo 'Oh! Did you delete the readme.txt? There you can find more informations. Take a look into the downloaded zip :)'
-		endif
+	elseif [event] = 'click_SHiFT Code-Manager:Menu_Help'
+		echo 'Huh? Oh you got me... Here is nothing right now... If you really need help, visit my reddit post and ask for help! Thank you :)'
+		
+	elseif [event] = 'click_SHiFT Code-Manager:Menu_About'
+		echo 'SHiFT Code-Manager is developed by me, SurrendeR1993. I found the idea of automatically redeeming SHiFT codes interesting and found, after a short search, a similar tool. But it did not satisfy me in some aspects.'#[new_line]#'So I decided to write my very own tool for automatic redemption of SHiFT codes. As I have some good knowledge in the pretty unknown but very easy scripting language "RapidBATCH", I started to make a prototype and after hours I had a nicely program on my desktop, first called "VIP-Manager".'#[new_line]#'I worked it more and more out, found an excellent source for the SHiFT and VIP codes (Thank you my friend, Orcicorn =) ) and finally released it on Github and Reddit. As you are reading this, I assume, that you are using this little tool (or you are just investigating the source :D) and I hope you are satisfied with it. I would really appreciate it, if you then upvote it on reddit!'#[new_line]#''#[new_line]#'I will continue to improve the tool in the future, so stay tuned for updates!'#[new_line]#''#[new_line]#'Ah and to those, who are worried about their login data (no matter if you just investigate the source or you are using the tool): I am really not interested into your account. You can study the source so intense as you want, change cURL with the compiled source code from Github, capture the internet traffic or do whatever you want, you would not find any clues because there are no! (I can just guarantee this, if you have downloaded the tool or the source code from my post on reddit or from github! Do not trust any other source!!!).'#[new_line]#'Thank you!'#[new_line]#''#[new_line]#'-SurrendeR1993'
 		
 	rem --- event handling for menu item "Logout"
 	elseif [event] = 'click_SHiFT Code-Manager:Menu_Logout'
@@ -1974,7 +2002,6 @@ repeat
 	rem --- event handling for click on "open"
 	elseif [event] = 'click_SHiFT Code-Manager_autostart:open'
 		rem *** insert event code here ***
-		echo 'open C:\'#[curuser]#'\SurrendeR1993\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup'
 		open 'C:\Users\'#[curuser]#'\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup'
 	endif
 
